@@ -1,3 +1,7 @@
+# The following information is not about me. I am learning how to build the website in github. These information is from a youtube video
+https://www.youtube.com/watch?v=D9CLhQdLp8w
+
+
 # Data Scientist
 
 #### Technical Skills: Python, SQL, AWS, Snowflake, MATLAB
