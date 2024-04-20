@@ -1,6 +1,11 @@
 ## Khondhaker Al Momin
 
-# Data Scientist
+##### Education
+- Ph.D. in Civil Engineering
+- M.Sc. in Industrial & System Engineering
+- Graduate Certificate in Data Science and Analytics
+- M.Sc. in Civil Engineering
+- BSc. in Civil Engineering
 
 #### Technical Skills: Python, SQL, AWS, Snowflake, MATLAB
 
