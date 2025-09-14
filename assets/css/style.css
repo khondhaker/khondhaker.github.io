@@ -1267,3 +1267,148 @@ a:hover {
 .contact form button[type="submit"]:hover {
   background: var(--dark-crimson);
 }
+
+/* --- Fellowships & Awards --- */
+.awards .section-title h2,
+#awards .section-title h2 { color: var(--dark-crimson); } /* inherits your theme */
+
+.award-list { margin-top: 10px; }
+.award-item {
+  display: flex;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+.award-item:last-child { border-bottom: 0; }
+
+.award-item .year {
+  flex: 0 0 120px;
+  font-weight: 700;
+  color: var(--dark-crimson);
+}
+.award-item .text {
+  flex: 1 1 auto;
+  margin: 0;
+  color: #272829;
+}
+
+@media (max-width: 576px) {
+  .award-item { flex-direction: column; }
+  .award-item .year { margin-bottom: 4px; }
+}
+
+/* --- Professional Service --- */
+.service-list {
+  margin-top: 20px;
+}
+
+.service-heading {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--dark-crimson);
+  margin-bottom: 15px;
+}
+
+.service-item {
+  display: flex;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.service-item:last-child {
+  border-bottom: none;
+}
+
+.service-item .year {
+  flex: 0 0 120px;
+  font-weight: bold;
+  color: var(--dark-crimson);
+}
+
+.service-item p {
+  flex: 1 1 auto;
+  margin: 0;
+  color: #272829;
+}
+
+.service-item a {
+  color: var(--oklahoma-crimson);
+  text-decoration: none;
+}
+
+.service-item a:hover {
+  text-decoration: underline;
+}
+
+
+/*Presentation Section*/
+.presentations { background: #fff; } /* keep white; remove if you want alternating gray */
+
+.talk-list { margin-top: 10px; }
+
+.talk {
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.talk:last-child { border-bottom: none; }
+
+.talk-title {
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--dark-crimson);
+}
+
+.talk-meta {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.talk-bullets {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.talk-bullets li {
+  margin-bottom: 4px;
+}
+
+.social-links a.researchgate {
+  background: #333; /* default circle background (like others) */
+  color: #fff;
+}
+
+.social-links a.researchgate:hover {
+  background: #00ccbb; /* ResearchGate teal */
+  color: #fff;
+}
+
+/* Hero social links */
+.hero-social-links {
+  margin-top: 20px;
+}
+
+.hero-social-links a {
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2c2f3f;
+  color: #fff;
+  margin: 0 8px;
+  transition: 0.3s;
+}
+
+.hero-social-links a:hover {
+  color: #fff;
+}
+
+.hero-social-links a.linkedin:hover { background: #0a66c2; }
+.hero-social-links a.researchgate:hover { background: #00ccbb; }
+.hero-social-links a.googlescholar:hover { background: #4285f4; }

@@ -19,6 +19,7 @@
   <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -39,8 +40,14 @@
         <!-- Name is now in the Hero Section -->
         <div class="social-links mt-3 text-center">
           <a href="https://www.linkedin.com/in/momin-buet/" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
-          <a href="https://www.facebook.com/momin.buet/" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
-          <a href="https://scholar.google.com/citations?user=T7LixY0AAAAJ&hl=en&authuser=1" class="google" target="_blank"><i class="bx bxl-google"></i></a>
+<a href="https://www.researchgate.net/profile/Khondhaker-Momin?ev=hdr_xprf"
+   class="researchgate" target="_blank" aria-label="ResearchGate">
+  <i class="fa-brands fa-researchgate"></i>
+</a>
+          <a href="https://scholar.google.com/citations?user=T7LixY0AAAAJ&hl=en&authuser=1"
+   class="googlescholar" target="_blank" aria-label="Google Scholar">
+  <i class="fa-brands fa-google-scholar"></i>
+</a>
         </div>
       </div>
 
@@ -50,6 +57,7 @@
           <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
           <li><a href="#publications"><i class="bx bx-book-content"></i>Publications</a></li>
+          <li><a href="#awards"><i class="bx bx-trophy"></i>Fellowships & Awards</a></li>
           <li><a href="#presentation"><i class="bx bx-chart"></i>Presentation</a></li>
           <li><a href="#leadership"><i class="bx bx-chalkboard"></i>Leadership</a></li>
           <li><a href="#contact"><i class="bx bx-envelope"></i>Contact</a></li>
@@ -61,21 +69,8 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-<!--  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Khondhaker Al Momin</h1>
-      <p><span class="typed" data-typed-items="Ph.D. Candidate, Transportation Engineer"></span></p>
-      <div class="hero-contact">
-        <p>University of Oklahoma | Norman, OK</p>
-        <p>momin@ou.edu</p>
-      </div>
-    </div>
-  </section>-->
-  
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-  
-  <div id="tsparticles"></div>
-
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
   <div class="hero-container" data-aos="fade-in">
     <h1>Khondhaker Al Momin</h1>
     <p><span class="typed" data-typed-items="Ph.D. Candidate, Transportation Engineer"></span></p>
@@ -83,15 +78,28 @@
       <p>University of Oklahoma | Norman, OK</p>
       <p>momin@ou.edu</p>
     </div>
+
+    <!-- Social links inside hero -->
+    <div class="hero-social-links mt-3">
+      <a href="https://www.linkedin.com/in/momin-buet/" class="linkedin" target="_blank" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="https://www.researchgate.net/profile/Khondhaker-Momin?ev=hdr_xprf" class="researchgate" target="_blank" aria-label="ResearchGate">
+        <i class="fa-brands fa-researchgate"></i>
+      </a>
+      <a href="https://scholar.google.com/citations?user=T7LixY0AAAAJ&hl=en&authuser=1" class="googlescholar" target="_blank" aria-label="Google Scholar">
+        <i class="fa-brands fa-google-scholar"></i>
+      </a>
+    </div>
   </div>
 </section>
-  
+<!-- End Hero Section -->
   
   <!-- End Hero -->
 
   <main id="main">
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <section id="about" class="section-bg">
       <div class="container">
         <div class="section-title">
           <h2>About Me</h2>
@@ -159,6 +167,11 @@
           <h2>Resume</h2>
           <p class="justify-text">Khondhaker Al Momin is currently pursuing a Ph.D. in Transportation Engineering while working as a graduate research assistant at the University of Oklahoma. He has previously worked as a senior lecturer at Daffodil International University. Holding interdisciplinary qualifications in civil engineering, system engineering, and data science, his research actively focuses on diverse areas, including traffic incident analysis and prevention, traffic flow theory, and ACES (autonomous, connected electric, and shared) vehicles. His interests also extend to big data analytics, network science, natural hazards, and system optimization.
           </p>
+          <div class="text-center mt-4">
+            <a href="https://1drv.ms/f/c/9e4b4d60c64dc43c/EjzWYGR46kpKsJbKPrbTnsQBLWbBIrb7n7VTiAXAUGGwhg?e=NvisSw" class="btn" style="background-color: #8a1515; border-color: #8a1515; color: white;" target="_blank" download="Khondhaker_Al_Momin_CV.pdf">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+          </div>
         </div>
         
         <div class="row">
@@ -257,70 +270,314 @@
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-review">Patents</li>
               <li data-filter=".filter-journal">Journal Papers</li>
               <li data-filter=".filter-conference">Conference & Book Chapters</li>
-              <li data-filter=".filter-review">Under Review</li>
             </ul>
           </div>
         </div>
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
 
-          <div class="col-lg-12 portfolio-item filter-journal">
-              <p><b>Journal Papers</b></p>
-              <ol>
-                <li><p>Sakib, N., Paul, T., Ahmed, T., Momin, K.A., Barua, S., (2024). <em>Investigating Factors Influencing Pedestrian Crosswalk Usage Behavior in Dhaka City using Supervised Machine Learning Techniques</em>. Multimodal Transportation, 3(1), 100108. <a href="https://doi.org/10.1016/j.multra.2023.100108" target="_blank">DOI</a></p></li>
-                <li><p>Momin, K.A., Kays, H. M., Sadri, A.M., (2023). <em>Identifying Crisis Response Communities in Online Social Networks for Compound Disasters: The Case of Hurricane Laura and Covid-19</em>. Transportation Research Record. <a href="https://doi.org/10.1177/0361198123116812" target="_blank">DOI</a></p></li>
-                <li><p>Faysal, R. M., Bhuiyan, M. M. H., Momin, K.A., Tafsirojjaman, T., & Liu, Y. (2023). <em>A review on the advances of the study on FRP-Concrete bond under hygrothermal exposure</em>. Construction and Building Materials. <a href="https://doi.org/10.1016/j.conbuildmat.2022.129818" target="_blank">DOI</a></p></li>
-                <li><p>Ahsan, M.M., Uddin, M.R., Ali, M.S., Islam, M.K., Farjana, M., Sakib, A.N., Momin, K.A and Luna, S.A., (2023). <em>Deep transfer learning approaches for Monkeypox disease diagnosis</em>. Expert Systems with Applications, p.119483. <a href="https://doi.org/10.1016/j.eswa.2022.119483" target="_blank">DOI</a></p></li>
-                <li><p>Momin, K.A., Barua, S., Hamim O.F., Roy S. (2022) <em>Modeling the Behavior in Choosing Travel Mode for Long-Distance Travel Using Supervised Machine Learning Algorithms</em>. Communications - Scientific letters of the University of Zilina, 24(3), A112-122. <a href="https://doi.org/10.26552/com.C.2022.4.A187-A197" target="_blank">DOI</a></p></li>
-                <li><p>Momin, K.A., Islam, S., Barua, S. (2021) <em>Effects of Non-motorized Vehicle on Speed-Density Relationship of An Urban Intersection</em>. Trends in Transport Engineering and Applications, STM Journals, Volume 8, Issue 1, pp. 22-29, ISSN: 2394-7284. DOI: 10.37591/TTEA.</p></li>
-              </ol>
-          </div>
+<div class="col-lg-12 portfolio-item filter-review">
+  <p><b>Patents</b></p>
+  <ol>
+    <li>
+      <p>
+       Sadri, A.M., Momin, K.A. (2025). 
+        <em>Measuring and Identifying Information Divergence in Online Interactions</em>. 
+        U.S. Provisional Patent Application No. 63/789,757, filed April 16, 2025.
+      </p>
+    </li>
+  </ol>
+</div>
+
+<div class="col-lg-12 portfolio-item filter-journal">
+  <p><b>Journal Papers</b></p>
+  <ol>
+    <li><p><strong>Momin, K.A.</strong>, Sadri, A. M., Muraleetharan, K. K., Campos, R., and Harvey, P. S. (2025). <em>Application of multi-criteria decision analysis for optimal siting of electric vehicle charging stations in Oklahoma</em>. Transportation Engineering, 20, 100325. <a href="https://doi.org/10.1016/j.treng.2025.100325" target="_blank">DOI</a></p></li>
+    <li><p><strong>Momin, K.A.</strong>, Hamim, O. F., Hoque, M. S., and McIlroy, R. C. (2025). <em>Integrating design and system approaches for analyzing road traffic collisions in low-income settings</em>. Accident Analysis & Prevention, 214, 107965. <a href="https://doi.org/10.1016/j.aap.2025.107965" target="_blank">DOI</a></p></li>
+    <li><p><strong>Momin, K.A.</strong>, Sadri, A. M., Olofsson, K., Muraleetharan, K. K., and Gladwin, H. (2025). <em>Information switching patterns of risk communication in social media during disasters</em>. IEEE Transactions on Big Data, 0(0), 1–12. <a href="https://doi.org/10.1009/TBDATA.2024.3524828" target="_blank">DOI</a></p></li>
+    <li><p>Kays, H. M., <strong>Momin, K.A.</strong>, Muraleetharan, K. K., and Sadri, A. M. (2025). <em>Translating risk narratives in socio-technical systems into infrastructure utilization metrics during compounding hazard events</em>. Transportation Research Interdisciplinary Perspectives, 30, 101361. <a href="https://doi.org/10.1016/j.trip.2025.101361" target="_blank">DOI</a></p></li>
+    <li><p><strong>Momin, K.A.</strong>, Kays, H. M. I., and Sadri, A. M. (2024). <em>Identifying Crisis Response Communities in Online Social Networks for Compound Disasters: The Case of Hurricane Laura and COVID-19</em>. Transportation Research Record, 2678(12), 599-617. <a href="https://doi.org/10.1177/03611981231168120" target="_blank">DOI</a></p></li>
+    <li><p>Sakib, N., Paul, T., Ahmed, M. T., <strong>Momin, K.A.</strong>, and Barua, S. (2024). <em>Investigating factors influencing pedestrian crosswalk usage behavior in Dhaka city using supervised machine learning techniques</em>. Multimodal Transportation, 3(1), 100108. <a href="https://doi.org/10.1016/j.multra.2023.100108" target="_blank">DOI</a></p></li>
+    <li><p>Sakib, N., Paul, T., Ahmed, M. T., <strong>Momin, K.A.</strong>, and Barua, S. (2024). <em>Dataset on factors influencing pedestrian crosswalk usage behavior in high-density urban areas of a developing country</em>. Data in Brief, 57, 110912. <a href="https://doi.org/10.1016/j.dib.2024.110912" target="_blank">DOI</a></p></li>
+    <li><p>Ahsan, M. M., Uddin, M. R., Ali, M. S., Islam, M. K., Farjana, M., Sakib, A. N., <strong>Momin, K.A.</strong>, and Luna, S. A. (2023). <em>Deep transfer learning approaches for Monkeypox disease diagnosis</em>. Expert Systems with Applications, 216, 119483. <a href="https://doi.org/10.1016/j.eswa.2022.119483" target="_blank">DOI</a></p></li>
+    <li><p>Faysal, R. M., Bhuiyan, M. M. H., <strong>Momin, K.A.</strong>, Tafsirojjaman, T., and Liu, Y. (2023). <em>A review on the advances of the study on FRP-Concrete bond under hygrothermal exposure</em>. Construction and Building Materials, 363, 129818. <a href="https://doi.org/10.1016/j.conbuildmat.2022.129818" target="_blank">DOI</a></p></li>
+    <li><p><strong>Momin, K.A.</strong>, Barua, S., Hamim, O. F., and Roy, S. (2022). <em>Modeling the behavior in choosing the travel mode for long-distance travel using supervised machine learning algorithms</em>. Communications - Scientific Letters of the University of Zilina, 24(4), 187–197. <a href="https://doi.org/10.26552/com.C.2022.4.A187-A197" target="_blank">DOI</a></p></li>
+    <li><p><strong>Momin, K.A.</strong>, Islam, S., and Barua, S. (2021). <em>Effects of non-motorized vehicles on the speed–density relationship of an urban intersection</em>. Trends in Transport Engineering and Applications, 8(1), 22–29.</p></li>
+  </ol>
+</div>
+
 
           <div class="col-lg-12 portfolio-item filter-conference">
-              <p><b>Book Chapter</b></p>
-              <ol>
-                <li><p>Momin K.A., Hamim O.F. (2022). <em>Pavement Management System Using Deflection Prediction Model of Flexible Pavements in Bangladesh.</em> In: Arthur S., Saitoh M., Pal S.K. (eds) Advances in Civil Engineering. Lecture Notes in Civil Engineering, vol 184. Springer, Singapore. <a href="https://doi.org/10.1007/978-981-16-5547-0_34" target="_blank">DOI</a></p></li>
-              </ol>
-              <p><b>Conference Proceedings</b></p>
-              <ol>
-                <li><p>Momin, K.A., Hasnine, M.S. Sadri, A.M., (2024). <em>Community-based Behavioral Understanding of Crisis Activity Concerns using Social Media Data: A Study on the 2023 Canadian Wildfires in New York City</em>. Transportation Research Board (TRB) 103rd Annual Meeting. Washington, D.C, USA.</p></li>
-                <li><p>Kays, H. M., Momin, K.A., Thwala, M.B., Muraleetharan. K.M., Sadri, A.M., (2024). <em>Translating Social Media Crisis Narratives into Road Network Utilization Metrics: The Case of 2020 Oklahoma Ice Storm</em>. Transportation Research Board (TRB) 103rd Annual Meeting. Washington, D.C, USA.</p></li>
-                <li><p>Momin, K.A., Kittur, J., Rouf, T., Sadri, A.M., (2023). <em>Exploring the Use of Social Media in Engineering Education—Preliminary Findings from a Systematic Literature Review</em>. 2023 ASEE Annual Conference & Exposition. Baltimore, Maryland, USA. <a href="https://peer.asee.org/43653" target="_blank">DOI</a></p></li>
-                <li><p>Momin, K.A., Barua, S., Jamil, M. S., Hamim, O. F. (2023). <em>Short Duration Traffic Flow Prediction Using Kalman Filtering</em>. AIP Conference Proceedings. <a href="https://doi.org/10.1063/5.0129721" target="_blank">DOI</a></p></li>
-              </ol>
-          </div>
+  <p><b>Book Chapter</b></p>
+  <ol>
+    <li><p><strong>Momin, K.A.</strong> and Hamim, O. F. (2022). <em>Pavement management system using deflection prediction model of flexible pavements in Bangladesh.</em> In: Arthur S., Saitoh M., Pal S.K. (eds) Advances in Civil Engineering. Lecture Notes in Civil Engineering, vol 184. Springer, Singapore. pp. 363–370. <a href="https://doi.org/10.1007/978-981-16-5547-0_34" target="_blank">DOI</a></p></li>
+  </ol>
 
-          <div class="col-lg-12 portfolio-item filter-review">
-              <p><b>Under Review Papers</b></p>
-                <ol>
-                  <li><p>Momin, K.A., Hamim, O.F., Hoque, M.S., McIlroy, R.C., (2024). <em>Integrating design and system approaches for analyzing distracted driving collisions in low-income setting</em>. Safety Science.</p></li>
-                  <li><p>Momin, K.A., Sadri, A.M., Olofsson, K., Muraleetharan. K.M., (2024). <em>Understanding the Social Media Information Switching Pattern During Compound Disasters</em>.</p></li>
-                </ol>
-            </div>
-        </div>
+  <p><b>Conference Proceedings</b></p>
+  <ol>
+    <li><p><strong>Momin, K.A.</strong>, Kays, H. M., Sadri, A. M. (2025). <em>Modeling EV adoption potential using public perception and infrastructure accessibility.</em> In International Conference on Transportation and Development 2025. American Society of Civil Engineers. pp. 286–299. <a href="https://doi.org/10.1061/9780784486207.025" target="_blank">DOI</a></p></li>
+    <li><p>Kays, H. M., <strong>Momin, K.A.</strong>, Chowdhury, M. S., Sadri, A. M., Muraleetharan, K. K. (2025). <em>Predicting long-term urban traffic patterns under varying weather conditions with AI.</em> In International Conference on Transportation and Development 2025. American Society of Civil Engineers. pp. 580–592. <a href="https://doi.org/10.1061/9780784486207.050" target="_blank">DOI</a></p></li>
+    <li><p>Sakib, N., Ahmed, I., and <strong>Momin, K.A.</strong> (2025). <em>Factors affecting bicycling experience in a developing country.</em> AIP Conference Proceedings, 3262(1), 020020. <a href="https://doi.org/10.1063/5.0247164" target="_blank">DOI</a></p></li>
+    <li><p>Sadri, A. M., Sadri, A. M., <strong>Momin, K.A.</strong>, Kittur, J., and Rouf, T. (2024). <em>Identifying educational communication patterns through social media interactions: The case of engineering education in Oklahoma.</em> Proceedings of the Future of Engineering Education 2024 ASEE (American Society for Engineering Education) Annual Conference, June 23–26, 2024, Portland, Oregon, USA. <a href="https://peer.asee.org/47545" target="_blank">DOI</a></p></li>
+    <li><p>Tobias, A. G., Kittur, J., <strong>Momin, K.A.</strong>, Rouf, T., and Sadri, A. M. (2024). <em>Bridging the gap: The impact of social media on modern engineering education—A systematic literature review.</em> Proceedings of the Future of Engineering Education 2024 ASEE (American Society for Engineering Education) Annual Conference, June 23–26, 2024, Portland, Oregon, USA. <a href="https://peer.asee.org/48416" target="_blank">DOI</a></p></li>
+    <li><p><strong>Momin, K.A.</strong>, Hasnine, M.S. Sadri, A.M., (2024). <em>Community-based Behavioral Understanding of Crisis Activity Concerns using Social Media Data: A Study on the 2023 Canadian Wildfires in New York City.</em> Transportation Research Board (TRB) 103rd Annual Meeting. Washington, D.C, USA.</p></li>
+    <li><p>Kays, H. M., <strong>Momin, K.A.</strong>, Thwala, M.B., Muraleetharan. K.M., Sadri, A.M., (2024). <em>Translating Social Media Crisis Narratives into Road Network Utilization Metrics: The Case of 2020 Oklahoma Ice Storm.</em> Transportation Research Board (TRB) 103rd Annual Meeting. Washington, D.C, USA.</p></li>
+    <li><p><strong>Momin, K.A.</strong>, Kittur, J., Rouf, T., and Sadri, A. M. (2023). <em>Exploring the use of social media in engineering education—Preliminary findings from a systematic literature review.</em> 2023 ASEE Annual Conference & Exposition. Baltimore, Maryland, USA. <a href="https://peer.asee.org/43653" target="_blank">DOI</a></p></li>
+    <li><p><strong>Momin, K.A.</strong>, Barua, S., Jamil, M. S., and Hamim, O. F. (2023). <em>Short duration traffic flow prediction using Kalman filtering.</em> AIP Conference Proceedings, 2713(1), 040011. <a href="https://doi.org/10.1063/5.0129721" target="_blank">DOI</a></p></li>
+  </ol>
+</div>
 
-      </div>
-    </section><!-- End Publication Section -->
 
-    <!-- ======= Presentation Section ======= -->
-    <section id="presentation" class="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Presentations</h2>
-          <p class="justify-text">I have actively participated and presented my research at several prestigious conferences and workshops both nationally and internationally. My presentations have primarily focused on diverse aspects of transportation engineering, sustainable development, and natural hazard mitigation.</p>
-        </div>
-        <p><b>Selected Presentations</b></p>
-        <ol>
-          <li><strong>Transportation Research Board (TRB) 103rd Annual Meeting</strong> - January 7–11, 2024, Washington, D.C, USA</li>
-          <li><strong>Transportation Research Board (TRB) 102nd Annual Meeting</strong> - January 8–12, 2023, Washington, D.C, USA</li>
-          <li><strong>Oklahoma Transportation Research Day (OTRD), 2022</strong> - October 18, 2022, Oklahoma City, Oklahoma</li>
-          <li><strong>Oklahoma EPSCoR-S3OK Research Retreat, 2022</strong> - September 22-23, 2022, Midwest City, Oklahoma</li>
-          <li><strong>47th Annual Natural Hazards Research and Applications Workshop</strong> - July 10 to 13, 2022, Natural Hazards Center, Boulder, CO</li>
-        </ol>
       </div>
     </section>
+<!-- End Publication Section -->
+
+<!-- ======= Fellowships &amp Awards Section ======= -->
+<section id="awards">
+  <div class="container">
+    <div class="section-title">
+      <h2>Fellowships &amp; Awards</h2>
+    </div>
+
+    <div class="award-list" data-aos="fade-up">
+      <div class="award-item">
+        <span class="year">2024–2025</span>
+        <p class="text">
+          Nettie Vincent Boggs Graduate Fellowship for outstanding research and academic record in the College of Engineering at the University of Oklahoma.
+        </p>
+      </div>
+
+      <div class="award-item">
+        <span class="year">2024–2025</span>
+        <p class="text">
+          GSS Travel Grant, Graduate Student Senate, University of Oklahoma, for presenting research at the International Conference on Transportation and Development (ICTD, 2024).
+        </p>
+      </div>
+
+      <div class="award-item">
+        <span class="year">2024–2025</span>
+        <p class="text">
+          Access Scholarship, Office of Global Engagement, University of Oklahoma, based on academic achievement and commitment to international activities at the University of Oklahoma.
+        </p>
+      </div>
+
+      <div class="award-item">
+        <span class="year">2023–2024</span>
+        <p class="text">
+          Gallogly College of Engineering Scholarship for outstanding academic record in the College of Engineering at the University of Oklahoma.
+        </p>
+      </div>
+
+      <div class="award-item">
+        <span class="year">2023–2024</span>
+        <p class="text">
+          Oklahoma Traffic Engineering Association (OTEA) Scholarship based on academic performance in Traffic and Transportation Engineering at the University of Oklahoma.
+        </p>
+      </div>
+
+      <div class="award-item">
+        <span class="year">2023–2024</span>
+        <p class="text">
+          Robberson Travel Grant for presenting research at Transportation Research Board (TRB) 102<sup>nd</sup> Annual Meeting 2023.
+        </p>
+      </div>
+
+      <div class="award-item">
+        <span class="year">2023–2024</span>
+        <p class="text">
+          Betsy Douglass and Millar B. White Jr. Endowed Scholarship and Mote Endowed Engineering Scholarship for outstanding academic record in the Gallogly College of Engineering, University of Oklahoma.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Fellowships & Awards Section -->
+
+<!-- ======= Professional Service Section ======= -->
+<section id="service" class="section-bg">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Professional Service</h2>
+    </div>
+
+    <div class="service-list" data-aos="fade-up">
+      <h4 class="service-heading">Journal Reviewer</h4>
+      
+      <div class="service-item">
+        <span class="year">2025–Present</span>
+        <p><strong>Reviewer</strong>, <a href="https://www.sciencedirect.com/journal/international-journal-of-information-management-data-insights" target="_blank">International Journal of Information Management Data Insights</a>. Reviewed a methodological submission on NLP and information extraction in disaster communication, emphasizing data augmentation, class imbalance, and empirical validation.</p>
+      </div>
+
+      <div class="service-item">
+        <span class="year">2024–Present</span>
+        <p><strong>Reviewer</strong>, <a href="https://www.sciencedirect.com/journal/international-journal-of-disaster-risk-reduction" target="_blank">International Journal of Disaster Risk Reduction</a>. Reviewed research on vulnerability analysis, resilience strategies, and interdisciplinary approaches.</p>
+      </div>
+
+      <div class="service-item">
+        <span class="year">2024–Present</span>
+        <p><strong>Reviewer</strong>, <a href="https://www.sciencedirect.com/journal/sustainable-cities-and-society" target="_blank">Sustainable Cities and Society</a>. Reviewed submissions on sustainable urban development, smart cities, and resilient infrastructure systems.</p>
+      </div>
+
+      <div class="service-item">
+        <span class="year">2024–Present</span>
+        <p><strong>Reviewer</strong>, <a href="https://www.sciencedirect.com/journal/computers-in-human-behavior-reports" target="_blank">Computers in Human Behavior Reports</a>. Reviewed research on HCI, user experience, and societal impacts of digital technologies.</p>
+      </div>
+
+      <div class="service-item">
+        <span class="year">2023–Present</span>
+        <p><strong>Reviewer</strong>, <a href="https://journals.sagepub.com/home/jis" target="_blank">Journal of Information Science</a>. Reviewed work on information management, theoretical frameworks, and applied methodologies.</p>
+      </div>
+
+      <div class="service-item">
+        <span class="year">2023–Present</span>
+        <p><strong>Reviewer</strong>, <a href="https://www.sciencedirect.com/journal/social-sciences-and-humanities-open" target="_blank">Social Sciences &amp; Humanities Open</a>. Reviewed transportation-related social science research and interdisciplinary perspectives.</p>
+      </div>
+
+      <div class="service-item">
+        <span class="year">2022–Present</span>
+        <p><strong>Reviewer</strong>, <a href="https://journals.sagepub.com/home/trr" target="_blank">Transportation Research Record</a>. Reviewed papers on transportation policy, planning, operations, safety, and design.</p>
+      </div>
+
+      <div class="service-item">
+        <span class="year">2022–Present</span>
+        <p><strong>Reviewer</strong>, <a href="https://www.sciencedirect.com/journal/transportation-research-interdisciplinary-perspectives" target="_blank">Transportation Research Interdisciplinary Perspectives</a>. Reviewed policy-oriented studies, innovative methodologies, and interdisciplinary research.</p>
+      </div>
+
+      <div class="service-item">
+        <span class="year">2022–Present</span>
+        <p><strong>Reviewer</strong>, <a href="https://trb-annual-meeting.nationalacademies.org/" target="_blank">Transportation Research Board Annual Meeting</a>. Reviewed submissions on equity, resilience, and infrastructure vulnerability. Ensured quality by evaluating critical research presentations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Professional Service Section -->
+
+    <!-- ======= Presentation Section ======= -->
+    <!-- ======= Presentation Section ======= -->
+<section id="presentation" class="presentations">
+  <div class="container">
+    <div class="section-title">
+      <h2>Presentations</h2>
+    </div>
+
+    <div class="talk-list" data-aos="fade-up">
+
+      <!-- ICTD 2025 -->
+      <article class="talk">
+        <h3 class="talk-title">International Conference on Transportation and Development (ICTD 2025)</h3>
+        <div class="talk-meta">June 8–11, 2025 • Glendale, Arizona, USA</div>
+        <ul class="talk-bullets">
+          <li>Modeling EV Adoption Potential Using Public Perception and Infrastructure Accessibility</li>
+          <li>Assessing Spatial Accessibility and Socio-Demographic Disparities in EV Charging Infrastructure</li>
+          <li>Predicting Long-Term Urban Traffic Patterns under Varying Weather Conditions with AI</li>
+        </ul>
+      </article>
+
+      <!-- TRB 2025 -->
+      <article class="talk">
+        <h3 class="talk-title">104<sup>th</sup> Transportation Research Board (TRB) Annual Meeting</h3>
+        <div class="talk-meta">January 5–9, 2025 • Washington, D.C, USA</div>
+        <ul class="talk-bullets">
+          <li>Information switching patterns of risk communication in social media during disasters</li>
+        </ul>
+      </article>
+
+      <!-- MOVITE 2024 -->
+      <article class="talk">
+        <h3 class="talk-title">2024 Fall MOVITE Meeting</h3>
+        <div class="talk-meta">October 15–18, 2024 • Manhattan, Kansas, USA</div>
+        <ul class="talk-bullets">
+          <li>Robust Site Selection for Electric Vehicle Charging Stations using Multi-Criteria Decision Analysis</li>
+        </ul>
+      </article>
+
+      <!-- AEJMC 2024 -->
+      <article class="talk">
+        <h3 class="talk-title">107<sup>th</sup> Annual Association for Education in Journalism and Mass Communication (AEJMC) Conference</h3>
+        <div class="talk-meta">August 8–11, 2024 • Philadelphia, Pennsylvania, USA</div>
+        <ul class="talk-bullets">
+          <li>Unveiling Hurricane Evacuation Order Vulnerabilities through Social Media Engagement and Communication: An Integrative Analysis of Coping and IPA</li>
+        </ul>
+      </article>
+
+      <!-- OK Transportation Summer Symposium 2024 -->
+      <article class="talk">
+        <h3 class="talk-title">2024 Oklahoma Transportation Summer Symposium</h3>
+        <div class="talk-meta">July 30, 2024 • Oklahoma City, Oklahoma, USA</div>
+        <ul class="talk-bullets">
+          <li>Assessing Spatial Accessibility and Socio-Demographic Disparities in Electric Vehicle Charging Infrastructure</li>
+          <li>Multi-Criteria Decision Analysis for Robust Locations of Electric Vehicle Charging Stations</li>
+        </ul>
+      </article>
+
+      <!-- Natural Hazards 2024 -->
+      <article class="talk">
+        <h3 class="talk-title">49<sup>th</sup> Annual Natural Hazards Research and Applications Workshop</h3>
+        <div class="talk-meta">July 14–17, 2024 • Boulder, Colorado, USA</div>
+        <ul class="talk-bullets">
+          <li>Understanding the Social Media Information Switching Behavior During Compound Disasters</li>
+        </ul>
+      </article>
+
+      <!-- ICTD 2024 -->
+      <article class="talk">
+        <h3 class="talk-title">International Conference on Transportation and Development (ICTD 2024)</h3>
+        <div class="talk-meta">June 15–18, 2024 • Atlanta, Georgia, USA</div>
+        <ul class="talk-bullets">
+          <li>Leveraging Social Media Data to Study Social Equity in Transportation</li>
+          <li>Community Based Behavioral Understanding of Crisis Activity Concerns during 2023 Canadian Wildfires</li>
+          <li>Data-driven Resilience Model of Roadway Directionality Configuration based on Topological Credential</li>
+        </ul>
+      </article>
+
+      <!-- TRB 2024 -->
+      <article class="talk">
+        <h3 class="talk-title">103<sup>rd</sup> Transportation Research Board (TRB) Annual Meeting</h3>
+        <div class="talk-meta">January 7–11, 2024 • Washington, D.C, USA</div>
+        <ul class="talk-bullets">
+          <li>Translating Social Media Crisis Narratives into Road Network Utilization Metrics: The Case of 2020 Oklahoma Ice Storm</li>
+          <li>Community-based Behavioral Understanding of Crisis Activity Concerns using Social Media Data: A Study on the 2023 Canadian Wildfires in New York City</li>
+          <li>A Data-driven Resilience Framework of Directionality Configuration based on Topological Credentials in Road Networks</li>
+        </ul>
+      </article>
+
+      <!-- Natural Hazards 2023 -->
+      <article class="talk">
+        <h3 class="talk-title">48<sup>th</sup> Annual Natural Hazards Research and Applications Workshop</h3>
+        <div class="talk-meta">July 11–14, 2023 • Boulder, Colorado, USA</div>
+        <ul class="talk-bullets">
+          <li>Risk Mapping of Interdependent Social and Physical Infrastructure Networks for Multi-Hazard Events</li>
+          <li>Identifying Critical Decision Trees of First Responders in Underserved Communities During Disasters</li>
+        </ul>
+      </article>
+
+      <!-- TRB 2023 -->
+      <article class="talk">
+        <h3 class="talk-title">102<sup>nd</sup> Transportation Research Board (TRB) Annual Meeting</h3>
+        <div class="talk-meta">January 8–12, 2023 • Washington, D.C, USA</div>
+        <ul class="talk-bullets">
+          <li>Identifying Crisis Response Communities in Online Social Networks for Compound Disasters: The Case of Hurricane Laura and Covid-19</li>
+          <li>Evaluating University Students’ Safety Behavior on Three-Wheel Electric Rickshaw</li>
+        </ul>
+      </article>
+
+      <!-- Natural Hazards 2022 -->
+      <article class="talk">
+        <h3 class="talk-title">47<sup>th</sup> Annual Natural Hazards Research and Applications Workshop</h3>
+        <div class="talk-meta">Virtual • July 13–14, 2022</div>
+        <ul class="talk-bullets">
+          <li>Identifying Hurricane Laura Crisis Response Communities in Online Social Networks</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+<!-- End Presentation Section -->
     <!-- End Presentation Section -->
 
     <!-- ======= Leadership Section ======= -->
@@ -423,17 +680,7 @@
     <!-- End Contact Section -->
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Khondhaker Al Momin</span></strong>
-      </div>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/" target="_blank">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
+
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
