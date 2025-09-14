@@ -210,11 +210,24 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/hero-bg.jpg") top center;
-  background-size: cover;
+  /* Keep your existing styles for #hero */
+  position: relative; /* Ensure child elements can be positioned absolutely */
+}
+
+/* ADD THIS NEW RULE 👇 */
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Sits behind the hero content which is z-index: 2 */
 }
 
 #hero:before {
