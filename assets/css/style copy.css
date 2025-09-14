@@ -1,5 +1,3 @@
-
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -75,9 +73,13 @@ h1, h2, h3, h4, h5, h6 {
 
 #header .profile img {
   margin: 15px auto;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: top center;  /* Try 'center top' or 'center 20%' */
+  border: 2px solid #2c2f3f;
   display: block;
-  width: 120px;
-  border: 8px solid #2c2f3f;
+  border-radius: 50%; /* optional: makes it circular */
 }
 
 #header .profile h1 {
@@ -208,11 +210,24 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/hero-bg.jpg") top center;
-  background-size: cover;
+  /* Keep your existing styles for #hero */
+  position: relative; /* Ensure child elements can be positioned absolutely */
+}
+
+/* ADD THIS NEW RULE 👇 */
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Sits behind the hero content which is z-index: 2 */
 }
 
 #hero:before {
@@ -394,13 +409,14 @@ section {
 # Akills
 --------------------------------------------------------------*/
 .skills .progress {
-  height: 50px;
+  height: 60px;
   display: block;
   background: none;
+  border-radius: 0;
 }
 
 .skills .progress .skill {
-  padding: 10px 0;
+  padding: 0;
   margin: 0 0 6px 0;
   text-transform: uppercase;
   display: block;
@@ -416,6 +432,7 @@ section {
 
 .skills .progress-bar-wrap {
   background: #dce8f8;
+  height: 10px;
 }
 
 .skills .progress-bar {
@@ -517,6 +534,11 @@ section {
   transition: all 0.3s ease-in-out;
 }
 
+.portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
+  color: #fff;
+  background: #149ddd;
+}
+
 .portfolio #portfolio-flters li:last-child {
   margin-right: 0;
 }
@@ -537,7 +559,7 @@ section {
   top: 0;
   bottom: 0;
   transition: all ease-in-out 0.3s;
-  z-index: -1;
+  z-index: 2;
   opacity: 0;
 }
 
@@ -562,10 +584,26 @@ section {
   width: 50%;
 }
 
+.portfolio .portfolio-wrap .portfolio-links a:hover {
+  background: rgba(20, 157, 221, 0.95);
+}
+
 .portfolio .portfolio-wrap .portfolio-links a + a {
   border-left: 1px solid #37b3ed;
 }
 
+.portfolio .portfolio-wrap:hover::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+}
+
+.portfolio .portfolio-wrap:hover .portfolio-links {
+  opacity: 1;
+  bottom: 0;
+}
 
 /*--------------------------------------------------------------
 # Services
@@ -1061,3 +1099,316 @@ section {
     padding-right: 20px 15px;
   }
 }
+
+
+/*
+--------------------------------------------------------------
+# University of Oklahoma - Custom Crimson Theme
+--------------------------------------------------------------
+*/
+
+:root {
+  --oklahoma-crimson: #841617;
+  --dark-crimson: #4e0002;
+  --light-gray: #f0f0f0;
+  --dark-gray: #323232;
+  --white: #ffffff;
+}
+
+/* --- General & Accent Colors --- */
+a {
+  color: var(--oklahoma-crimson);
+}
+
+a:hover {
+  color: var(--dark-crimson);
+}
+
+.back-to-top {
+  background: var(--oklahoma-crimson);
+}
+
+.back-to-top:hover {
+  background: var(--dark-crimson);
+}
+
+/* --- Header/Sidebar --- */
+#header {
+  background: var(--dark-crimson);
+}
+
+#header .profile .social-links a:hover {
+  background: var(--oklahoma-crimson);
+}
+
+/* --- Navigation --- */
+.nav-menu a:hover i, .nav-menu .active > a i, .nav-menu li:hover > a i {
+  color: var(--oklahoma-crimson);
+}
+
+.mobile-nav-toggle i {
+  color: var(--oklahoma-crimson);
+}
+
+/* --- Hero Section --- */
+#hero {
+  background: var(--white);
+}
+
+#hero:before {
+  content: none; /* Removes the dark overlay */
+}
+
+#hero h1 {
+  color: var(--dark-crimson);
+  font-size: 56px;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 32px;
+  }
+}
+
+#hero p {
+  color: var(--dark-gray);
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+#hero p span {
+  color: var(--dark-gray);
+  border-bottom: 3px solid var(--oklahoma-crimson);
+}
+
+.typed-cursor {
+  color: var(--dark-gray);
+}
+
+#hero .hero-contact {
+  margin-top: 25px;
+}
+
+#hero .hero-contact p {
+  font-size: 16px;
+  color: var(--dark-gray);
+  margin-bottom: 5px;
+  font-family: "Raleway", sans-serif;
+}
+
+
+/* --- Sections --- */
+.section-title h2 {
+  color: var(--dark-crimson);
+}
+
+.section-title h2::after {
+  background: var(--oklahoma-crimson);
+}
+
+.about .content ul i {
+  color: var(--oklahoma-crimson);
+}
+
+.facts .count-box i {
+  color: var(--oklahoma-crimson);
+}
+
+.skills .progress-bar {
+  background-color: var(--oklahoma-crimson);
+}
+
+.resume .resume-item {
+  border-left: 2px solid var(--dark-crimson);
+}
+
+.resume .resume-item::before {
+  border: 2px solid var(--dark-crimson);
+}
+
+.portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
+  background: var(--oklahoma-crimson);
+}
+
+.services .icon {
+  background: var(--oklahoma-crimson);
+  border: 1px solid var(--oklahoma-crimson);
+}
+
+.services .icon-box:hover .icon i {
+  color: var(--oklahoma-crimson);
+}
+
+.services .title a:hover {
+  color: var(--oklahoma-crimson);
+}
+
+.testimonials .owl-dot.active {
+  background-color: var(--oklahoma-crimson) !important;
+}
+
+
+/* --- Contact Form --- */
+.contact .info i {
+  color: var(--oklahoma-crimson);
+  background: #fdeaea;
+}
+
+.contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
+  background: var(--oklahoma-crimson);
+  color: var(--white);
+}
+
+.contact form button[type="submit"] {
+  background: var(--oklahoma-crimson);
+}
+
+.contact form button[type="submit"]:hover {
+  background: var(--dark-crimson);
+}
+
+/* --- Fellowships & Awards --- */
+.awards .section-title h2,
+#awards .section-title h2 { color: var(--dark-crimson); } /* inherits your theme */
+
+.award-list { margin-top: 10px; }
+.award-item {
+  display: flex;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+.award-item:last-child { border-bottom: 0; }
+
+.award-item .year {
+  flex: 0 0 120px;
+  font-weight: 700;
+  color: var(--dark-crimson);
+}
+.award-item .text {
+  flex: 1 1 auto;
+  margin: 0;
+  color: #272829;
+}
+
+@media (max-width: 576px) {
+  .award-item { flex-direction: column; }
+  .award-item .year { margin-bottom: 4px; }
+}
+
+/* --- Professional Service --- */
+.service-list {
+  margin-top: 20px;
+}
+
+.service-heading {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--dark-crimson);
+  margin-bottom: 15px;
+}
+
+.service-item {
+  display: flex;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.service-item:last-child {
+  border-bottom: none;
+}
+
+.service-item .year {
+  flex: 0 0 120px;
+  font-weight: bold;
+  color: var(--dark-crimson);
+}
+
+.service-item p {
+  flex: 1 1 auto;
+  margin: 0;
+  color: #272829;
+}
+
+.service-item a {
+  color: var(--oklahoma-crimson);
+  text-decoration: none;
+}
+
+.service-item a:hover {
+  text-decoration: underline;
+}
+
+
+/*Presentation Section*/
+.presentations { background: #fff; } /* keep white; remove if you want alternating gray */
+
+.talk-list { margin-top: 10px; }
+
+.talk {
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.talk:last-child { border-bottom: none; }
+
+.talk-title {
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--dark-crimson);
+}
+
+.talk-meta {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.talk-bullets {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.talk-bullets li {
+  margin-bottom: 4px;
+}
+
+.social-links a.researchgate {
+  background: #333; /* default circle background (like others) */
+  color: #fff;
+}
+
+.social-links a.researchgate:hover {
+  background: #00ccbb; /* ResearchGate teal */
+  color: #fff;
+}
+
+/* Hero social links */
+.hero-social-links {
+  margin-top: 20px;
+}
+
+.hero-social-links a {
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2c2f3f;
+  color: #fff;
+  margin: 0 8px;
+  transition: 0.3s;
+}
+
+.hero-social-links a:hover {
+  color: #fff;
+}
+
+.hero-social-links a.linkedin:hover { background: #0a66c2; }
+.hero-social-links a.researchgate:hover { background: #00ccbb; }
+.hero-social-links a.googlescholar:hover { background: #4285f4; }
