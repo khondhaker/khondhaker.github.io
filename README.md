@@ -31,19 +31,6 @@ The goal of this site is to provide a central hub for research visibility, profe
 
 ---
 
-## 📂 Repository Structure
-
-khondhaker.github.io/
-├── assets/
-│   ├── css/        # Custom CSS (style.css consolidated + overrides)
-│   ├── img/        # Profile photo, section images, logos
-│   ├── js/         # Main scripts (main.js, libraries initialization)
-│   └── vendor/     # Third-party dependencies (Bootstrap, AOS, Owl Carousel, etc.)
-├── index.html      # Main homepage (single-page design)
-├── README.md       # Documentation (this file)
-
----
-
 ## ⚡ Features
 - Mobile-friendly **responsive design**
 - **Lightweight animations** for smooth scrolling
