@@ -1,0 +1,1028 @@
+\documentclass[a4paper,11pt]{article}
+
+% --- CORE & FONT PACKAGES ---
+% Using the user's original pdflatex font setup
+\usepackage[T1]{fontenc}
+\usepackage{cfr-lm}       % Latin Modern font
+\usepackage{helvet}       % Helvetica font
+\usepackage{fontawesome5} % For icons (faPhone, faEnvelope, etc.)
+
+% --- PAGE LAYOUT & GEOMETRY ---
+% Consolidated geometry settings
+\usepackage[a4paper, left=1.5cm, top=2cm, right=0.5in, bottom=0.5in]{geometry}
+\usepackage{fancyhdr}     % For custom headers/footers
+\usepackage{lastpage}     % For "Page X of Y" functionality
+
+% --- STYLING & UTILITIES ---
+\usepackage{graphicx}     % For including images (dependency for icons)
+\usepackage{xcolor}       % For custom colors (loaded before tcolorbox)
+\usepackage[most]{tcolorbox} % For colored section boxes
+\usepackage{tabularx}     % For advanced tables
+\usepackage{enumitem}     % For customizing lists
+\usepackage{ragged2e}     % For \RaggedRight and \justifying
+
+% --- SECTION & LINK STYLING ---
+% titlesec is loaded once
+\usepackage{titlesec} % For custom section formats
+% hyperref is loaded last, which is generally good practice
+\usepackage{hyperref}     % For clickable links
+
+% --- COLOR DEFINITIONS ---
+% All original color definitions preserved
+% \definecolor{mycolor}{rgb}{0.678431,0.027451,0.329412}
+% \definecolor{mycolor}{rgb}{0.6117647,0.0431373,0.3098039} %pink
+% \definecolor{mycolor}{rgb}{0.039, 0.039, 0.039} %black
+\definecolor{mycolor}{rgb}{0.1019608, 0.1372549, 0.4941176} % blue
+% \definecolor{mycolor}{rgb}{0.6078431,0.1058824,0.1882353}
+% \definecolor{mycolor}{rgb}{0.047,0.671,0.369} % Soft Green
+% \definecolor{mycolor}{rgb}{0.8, 0.3, 0.3}
+\definecolor{gray}{gray}{0.4}
+\definecolor{mutedmycolor}{rgb}{0.8, 0.3, 0.3} % A softer carmine
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% --- HYPERREF & URL SETUP ---
+% Uses 'mycolor' defined above
+\hypersetup{
+    colorlinks=true,
+    linkcolor=mycolor,
+    urlcolor=mycolor,
+    filecolor=mycolor
+}
+\urlstyle{same} % Keep URL font consistent
+
+% --- PAGE STYLE & NUMBERING (FANCYHDR) ---
+% This single, consolidated block ensures page numbers appear correctly.
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\renewcommand{\headrulewidth}{0pt} % No header rule
+\renewcommand{\footrulewidth}{0pt} % No footer rule
+\setlength{\footskip}{15pt} % Set distance from text bottom to footer
+% Set the footer for 'fancy' pages
+\fancyfoot[R]{\small Page \thepage\ of \pageref*{LastPage}}
+% Apply the same footer settings to the 'plain' style (e.B., first page)
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+  \fancyfoot[R]{\small Page \thepage\ of \pageref*{LastPage}}
+}
+
+% --- TCOLORBOX SETUP ---
+% (Loaded after xcolor)
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}
+
+% --- GLOBAL LAYOUT SETTINGS ---
+\raggedright % Set global text alignment
+\setlength{\tabcolsep}{0in}
+% \setlength{\multicolsep}{0pt} % (Moved from original position)
+
+% --- SECTION FORMATTING ---
+% (Uses 'mycolor' defined above)
+\titleformat{\section}
+  {\vspace{5pt}\bfseries\raggedright\Large\color{mycolor}}
+  {}
+  {0em}
+  {\makebox[50pt]{\rule[0pt]{50pt}{5.5pt}}\hspace{2mm}}
+
+% --- CUSTOM COMMANDS ---
+% All custom commands are preserved exactly as in the original file.
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
+\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
+\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
+\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
+\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
+\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
+\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
+\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
+\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
+
+% --- DOCUMENT BODY ---
+% The entire body of the document is unchanged.
+\begin{document}
+
+% Header
+\headerfontvi
+\noindent
+\begin{tabularx}{\textwidth}{X l}
+    % First Row: Name in (1,1) and Empty (1,2)
+    \multicolumn{2}{@{}l@{}}{\huge \textbf{\textcolor{mycolor}{Khondhaker Al Momin, E.I.T.}}} \\
+
+    \rule[0pt]{\textwidth}{0.5pt} \\
+    [6pt]
+    % Second Row: Start Filling Information
+    \begin{tabular}[t]{@{}l@{}}
+        Ph.D. Candidate \\[2pt]
+        School of Civil Engineering \& Environmental Science \\[2pt]
+        The University of Oklahoma, Norman, OK - 73019
+    \end{tabular}
+    &
+    \begin{tabular}[t]{@{}l@{}}
+        \faPhone \hspace{4pt} (405) 953-5753 \\[3pt]
+        \faEnvelope \hspace{4pt} \href{mailto:momin@ou.edu}{momin@ou.edu} \\[3pt]
+        \faGlobe \hspace{4pt} \href{https://khondhaker.github.io/}{khondhaker.github.io}
+        % \faGlobe \hspace{4pt} \href{https://khondhaker.github.io/}{khondhaker.github.io} \href{https://tinyurl.com/47b9jh6t}{Google Scholar}
+        % \begin{center}
+        %     \includegraphics[width=0.03\textwidth]{google_scholar.png} % Adjust width as needed
+        % \end{center}
+        \end{tabular}
+\end{tabularx}
+
+% \vspace{-3mm}
+% \section{Professional Summary}
+% \vspace{-2mm}
+% \begin{justify}
+% I aim to leverage my expertise in transportation engineering and advanced computational techniques to enhance the \textbf{safety, resilience, and sustainability} of transportation systems. My research focuses on developing innovative strategies in traffic operations, network analysis, and the \textbf{behavioral and economic impacts} of \textbf{emerging technologies}. By analyzing system vulnerabilities and socioeconomic factors, especially in the context of natural and human-made disasters, I seek to contribute to a more efficient, safe and accessible transportation system.
+% \end{justify}
+
+\vspace{-4mm}
+\section{Education}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{\textcolor{mycolor}{Ph.D. in Civil Engineering}}{\textit{Norman, Oklahoma}}
+{University of Oklahoma}{\textit{ June 2026}}
+\resumeItemListStart
+\item Advisor: \textit{\href{https://scholar.google.com/citations?user=tushDT8AAAAJ&hl=en}{Dr. Arif Mohaimin Sadri}}
+
+\item Dissertation: \textit{A Multi-Scale Framework for Planning a Resilient, Equitable, and Economically Integrated Electrified Transportation System}
+
+\item \begin{justify}
+Key courses: \textit{Hazard Mitigation \& Community Resilience; Transportation Asset Management; Multimodal Transportation; Traffic Analysis, Design \& Control; Spatial Statistics; Systems Optimization; Network Science; Network Optimization.}
+\end{justify}
+\resumeItemListEnd
+\vspace{1mm}
+
+\resumeSubheading
+{\textcolor{mycolor}{M.S. in Civil Engineering (Transportation)}}{\textit{Dhaka, Bangladesh}}
+{Bangladesh University of Engineering \& Technology (BUET)}{\textit{Jan 2019 - Apr 2022}}
+\resumeItemListStart
+\item Advisor: \textit{\href{https://ce.buet.ac.bd/profile-of-md-shamsul-hoque/}{Dr. Md. Shamsul Hoque}}
+
+\item \textbf{Thesis}: \textit{Framework Development for Road Crash Mitigation Measures Using Advanced Systematic Approach and Design Principles}
+\item \begin{justify} Key courses: \textit{Traffic Simulation; Transportation Engineering Economics; Structural Design of Pavements; Geometric Design of Highways; Highway Materials; Air Pollution.}
+\end{justify}
+\resumeItemListEnd
+\vspace{1mm}
+
+\resumeSubheading
+{\textcolor{mycolor}{B.S. in Civil Engineering}}{\textit{Dhaka, Bangladesh}}
+{Bangladesh University of Engineering \& Technology (BUET)}{\textit{Feb 2013 - Sep 2017}}
+\resumeItemListStart
+\item Advisor: \textit{\href{https://scholar.google.com/citations?user=mSHTA8QAAAAJ&hl=en}{Dr. Tahsin Reza Hossain}}
+\item \textbf{Thesis}: \textit{Performance Evaluation of Building Structure Designed using BNBC (2015) by Time History Analysis}
+\item \begin{justify} Key courses: \textit{Transportation Planning and Traffic Engineering; Pavement Design and Railway Engineering; Engineering Economics; Structural Analysis and Design.}
+\end{justify}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+
+\vspace{-8mm}
+%=================================================
+% RESEARCH INTERESTS
+%=================================================
+\section{Research Interests}
+\vspace{-0.4mm} % Consistent with your other sections
+\resumeSubHeadingListStart % Your custom command for the main list
+
+    \item \textbf{Transportation Planning and Behavior:}
+        \resumeItemListStart % Your custom command for the nested list
+            \item Electric Vehicle (EV) Adoption, Infrastructure Planning, and Economic Impacts
+            \item Travel Behavior Modeling and Mode Choice Analysis
+            \item Transportation Equity and Socioeconomic Factors
+            \item Agent Based Modeling
+        \resumeItemListEnd
+    \vspace{1mm} % Adds a small gap between categories
+
+    \item \textbf{Traffic Operations and Safety:}
+        \resumeItemListStart
+            \item Traffic Flow Theory and Network Operations
+            \item Traffic Accident Analysis and Road Safety Management
+            \item Traffic Simulation
+        \resumeItemListEnd
+    \vspace{1mm}
+
+    \item \textbf{System Resilience and Risk Analysis:}
+        \resumeItemListStart
+            \item Transportation Network Resilience to Disasters
+            \item Human Behavior, Risk Communication, and Evacuation Modeling
+        \resumeItemListEnd
+    \vspace{1mm}
+
+    \item \textbf{Computational Methods in Transportation:}
+        \resumeItemListStart
+            \item Applied Data Science, Artificial Intelligence (AI), and Machine Learning
+            \item Spatial Statistics and Geospatial Analysis
+        \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{Certifications \& Licensure}
+\vspace{-0.4mm}
+
+\resumeSubHeadingListStart
+\resumeSubheading
+{\textcolor{black}{Graduate Certificate in Data Science and Analytics}}{\textit{Norman, Oklahoma}}
+{University of Oklahoma}{\textit{Aug 2022 - Aug 2023}}
+
+\begin{justify}
+\resumeItemListStart
+\item \textit{{CGPA – 4.00/4.00}}
+\item Key courses: \textit{Intelligence Data Analytics, Advanced Analytics and Metaheuristics, Fundamentals 
+of Engineering Statistical Analysis}
+\item \textit{Value}: Acquired expertise in data wrangling, analysis, machine learning, deep learning, visualization, statistical modeling, and geospatial analysis.
+\resumeItemListEnd
+\end{justify}
+\resumeSubHeadingListEnd
+
+
+\vspace{-2mm}
+\resumeSubHeadingListStart
+\resumeSubheading
+{\textcolor{black}{Fundamentals of Engineering (FE) – Civil}}{\textit{Norman, Oklahoma}}
+{National Council of Examiners for Engineering and Surveying (NCEES)}{\textit{Passed: November 2025}}
+
+\begin{justify}
+\resumeItemListStart
+\item \textbf{Status:} Passed the NCEES \textit{Fundamentals of Engineering (FE) – Civil} exam.
+\item Next Step: Eligibility to take the \textit{Principles and Practice of Engineering (PE)} exam after completing the required professional experience.
+\item Key Areas: \textit{Transportation, Structural, Geotechnical, Water Resources, Environmental, and Construction Engineering.}
+\item \textit{Value:} Demonstrates mastery of foundational civil engineering principles and readiness for professional engineering licensure.
+\resumeItemListEnd
+\end{justify}
+\resumeSubHeadingListEnd
+
+
+\vspace{-6mm}
+
+\section{Research and Publications} \hfill \textcolor{mycolor}{\small \textbf{P=Patent, J=Journal, C=Conference, S=In Submission}}
+\vspace{0.2mm}
+
+\textcolor{mycolor}{\textbf{Patents}}
+\begin{enumerate}[leftmargin=*, labelsep=0em, align=left, widest={[\textbf{J.10}]}, itemindent=0em, label={\textbf{[P.\arabic*]}}]
+
+\begin{justifying}
+
+    \item \textbf{Momin, K.A.}, Sadri, A.M. (2025). System and Method for Dynamic Assessment and Optimization of Disaster Evacuation Readiness. U.S. Provisional Patent Application No. 63/914,679, filed November 10, 2025.
+
+    \item Sadri, A.M., \textbf{Momin, K.A.} (2025). Measuring and Identifying Information Divergence in Online Interactions. U.S. Provisional Patent Application No. 63/789,757, filed April 16, 2025.
+    
+\end{justifying}
+\end{enumerate}
+
+\textcolor{mycolor}{\textbf{Journal Articles}}
+\begin{enumerate}[leftmargin=*, labelsep=0em, align=left, widest={[\textbf{J.10}]}, itemindent=0em, label={\textbf{[J.\arabic*]}}]
+
+\begin{justifying}
+
+    \item \textbf{Momin, K.A.}, Sadri, A. M., and Muraleetharan, K. K. (2026). The green gridlock: Projecting the unintended wildfire evacuation risks of EV adoption. \textit{Transportation Research Part D: Transport and Environment}, 153, 105219. \href{https://doi.org/10.1016/j.trd.2026.105219}{https://doi.org/10.1016/j.trd.2026.105219} \hfill [\textcolor{mycolor}{SJR: Q1}]
+
+    \item \textbf{Momin, K.A.}, Sadri, A. M., Muraleetharan, K. K., Campos, R., and Harvey, P. S. (2025). Application of multi-criteria decision analysis for optimal siting of electric vehicle charging stations in Oklahoma. \textit{Transportation Engineering}, 20, 100325. \href{https://doi.org/10.1016/j.treng.2025.100325}{https://doi.org/10.1016/j.treng.2025.100325} \hfill [\textcolor{mycolor}{SJR: Q1}]
+
+
+    \item \textbf{Momin, K.A.}, Hamim, O. F., Hoque, M. S., and McIlroy, R. C. (2025). Integrating design and system approaches for analyzing road traffic collisions in low-income settings. \textit{Accident Analysis \& Prevention}, 214, 107965. \href{https://doi.org/10.1016/j.aap.2025.107965}{https://doi.org/10.1016/j.aap.2025.107965} \hfill [\textcolor{mycolor}{SJR: Q1}]
+
+    \item \textbf{Momin, K.A.}, Sadri, A. M., Olofsson, K., Muraleetharan, K. K., and Gladwin, H. (2025). Information switching patterns of risk communication in social media during disasters. \textit{IEEE Transactions on Big Data}, 0(0), 1–12. \href{https://doi.org/10.1109/TBDATA.2024.3524828}{https://doi.org/10.1109/TBDATA.2024.3524828} \hfill [\textcolor{mycolor}{SJR: Q1}]
+
+    \item Kays, H. M., \textbf{Momin, K.A.}, Muraleetharan, K. K., and Sadri, A. M. (2025). Translating risk narratives in socio-technical systems into infrastructure utilization metrics during compounding hazard events. \textit{Transportation Research Interdisciplinary Perspectives}. \href{https://doi.org/10.1016/j.trip.2025.101361}{https://doi.org/10.1016/j.trip.2025.101361} \hfill [\textcolor{mycolor}{SJR: Q1}]
+
+    \item \textbf{Momin, K.A.}, Hasnine, M.S., and Sadri, A.M. (2025). Using social media to model community-based behavioral response during public health emergencies: A case study of the 2023 Canadian wildfires. Transportation Research Record, 0(0). \href{https://doi.org/10.1177/03611981251394965}{https://doi.org/10.1177/03611981251394965}. \hfill [\textcolor{mycolor}{SJR: Q2}]
+
+    \item \textbf{Momin, K.A.}, Kays, H. M. I., and Sadri, A. M. (2024). Identifying Crisis Response Communities in Online Social Networks for Compound Disasters: The Case of Hurricane Laura and COVID-19. \textit{Transportation Research Record}, 2678(12), 599-617. \href{https://doi.org/10.1177/03611981231168120}{https://doi.org/10.1177/03611981231168120}     \hfill [\textcolor{mycolor}{SJR: Q2}]
+    
+    \item Sakib, N., Paul, T., Ahmed, M. T., \textbf{Momin, K.A.}, and Barua, S. (2024). Investigating factors influencing pedestrian crosswalk usage behavior in Dhaka city using supervised machine learning techniques. \textit{Multimodal Transportation}, 3(1), 100108. \href{https://doi.org/10.1016/j.multra.2023.100108}{https://doi.org/10.1016/j.multra.2023.100108} \hfill [\textcolor{mycolor}{SJR: Q1}]
+    
+    \item Sakib, N., Paul, T., Ahmed, M. T., \textbf{Momin, K.A.}, and Barua, S. (2024). Dataset on factors influencing pedestrian crosswalk usage behavior in high-density urban areas of a developing country. \textit{Data in Brief}, 57, 110912. \href{https://doi.org/10.1016/j.dib.2024.110912}{https://doi.org/10.1016/j.dib.2024.110912} \hfill [\textcolor{mycolor}{SJR: Q1}]
+    
+    \item Ahsan, M. M., Uddin, M. R., Ali, M. S., Islam, M. K., Farjana, M., Sakib, A. N., \textbf{Momin, K.A.}, and Luna, S. A. (2023). Deep transfer learning approaches for Monkeypox disease diagnosis. \textit{Expert Systems with Applications}, 216, 119483. \href{https://doi.org/10.1016/j.eswa.2022.119483}{https://doi.org/10.1016/j.eswa.2022.119483} \hfill [\textcolor{mycolor}{SJR: Q1}]
+    
+    \item Faysal, R. M., Bhuiyan, M. M. H., \textbf{Momin, K.A.}, Tafsirojjaman, T., and Liu, Y. (2023). A review on the advances of the study on FRP-Concrete bond under hygrothermal exposure. \textit{Construction and Building Materials}, 363, 129818. \href{https://doi.org/10.1016/j.conbuildmat.2022.129818}{https://doi.org/10.1016/j.conbuildmat.2022.129818} \hfill [\textcolor{mycolor}{SJR: Q1}]
+    
+    \item \textbf{Momin, K.A.}, Barua, S., Hamim, O. F., and Roy, S. (2022). Modeling the behavior in choosing the travel mode for long-distance travel using supervised machine learning algorithms. \textit{Communications}, 24(4), 187–197. \href{https://doi.org/10.26552/com.C.2022.4.A187-A197}{https://doi.org/10.26552/com.C.2022.4.A187-A197} \hfill [\textcolor{mycolor}{SJR: Q3}]
+  
+\end{justifying}
+\end{enumerate}
+
+\vspace{2mm}
+% \newpage
+% Conference Proceedings
+\textcolor{mycolor}{\textbf{Conference Proceedings }}
+
+\begin{enumerate}[leftmargin=*, labelsep=0em, align=left, widest={[\textbf{C.10}]}, itemindent=0em, label={\textbf{[C.\arabic*]}}]
+
+\begin{justifying}
+
+\item \textbf{Momin, K.A.}, Kays, H. M., Sadri, A. M. (2025). Modeling EV adoption potential using public perception and infrastructure accessibility. In International Conference on Transportation and Development 2025. American Society of Civil Engineers. pp. 286–299. \href{https://doi.org/10.1061/9780784486207.025}{https://doi.org/10.1061/9780784486207.025}
+
+
+\item Kays, H. M., \textbf{Momin, K.A.}, Chowdhury, M. S., Sadri, A. M., Muraleetharan, K. K. (2025). Predicting long-term urban traffic patterns under varying weather conditions with AI. In International Conference on Transportation and Development 2025. American Society of Civil Engineers. pp. 580–592. \href{https://doi.org/10.1061/9780784486207.050}{https://doi.org/10.1061/9780784486207.050}
+
+
+\item Sakib, N., Ahmed, I., and \textbf{Momin, K.A.} (2025). Factors affecting bicycling experience in a developing country. \textit{AIP Conference Proceedings}, 3262(1), 020020. \href{https://doi.org/10.1063/5.0247164}{https://doi.org/10.1063/5.0247164}
+
+\item Sadri, A. M., Sadri, A. M., \textbf{Momin, K.A.}, Kittur, J., and Rouf, T. (2024). Identifying educational communication patterns through social media interactions: The case of engineering education in Oklahoma. \textit{Proceedings of the Future of Engineering Education 2024 ASEE (American Society for Engineering Education) Annual Conference}, June 23–26, 2024, Portland, Oregon, USA. \href{https://peer.asee.org/47545}{https://peer.asee.org/47545}
+
+\item Tobias, A. G., Kittur, J., \textbf{Momin, K.A.}, Rouf, T., and Sadri, A. M. (2024). Bridging the gap: The impact of social media on modern engineering education—A systematic literature review. \textit{Proceedings of the Future of Engineering Education 2024 ASEE (American Society for Engineering Education) Annual Conference}, June 23–26, 2024, Portland, Oregon, USA. \href{https://peer.asee.org/48416}{https://peer.asee.org/48416}
+
+\item \textbf{Momin, K.A.}, Kittur, J., Rouf, T., and Sadri, A. M. (2023). Exploring the use of social media in engineering education—Preliminary findings from a systematic literature review. \textit{Proceedings of the 2023 ASEE (American Society for Engineering Education) Annual Conference \& Exposition}, June 25–28, 2023, Baltimore, Maryland, USA. \href{https://peer.asee.org/43653}{https://peer.asee.org/43653}
+
+\item \textbf{Momin, K.A.}, Barua, S., Jamil, M. S., and Hamim, O. F. (2023). Short duration traffic flow prediction using Kalman filtering. \textit{AIP Conference Proceedings}, 2713(1), 040011. \href{https://doi.org/10.1063/5.0129721}{https://doi.org/10.1063/5.0129721}
+
+\item \textbf{Momin, K.A.} and Hamim, O. F. (2022). Pavement management system using deflection prediction model of flexible pavements in Bangladesh. \textit{Proceedings of Advances in Civil Engineering. Lecture Notes in Civil Engineering}, Springer Singapore, pp. 363–370. \href{https://doi.org/10.1007/978-981-16-5547-0\_34}{https://doi.org/10.1007/978-981-16-5547-0\_34}
+
+\vspace{4mm}
+\end{justifying}
+\end{enumerate}
+
+
+\vspace{-4mm}
+% Submitted papers
+\textcolor{mycolor}{\textbf{Submitted/Under-review Journal Articles}}
+\begin{enumerate}[leftmargin=*, labelsep=0em, align=left, widest={[\textbf{S.10}]}, itemindent=0em, label={\textbf{[S.\arabic*]}}]
+
+\begin{justifying}
+
+\item \textbf{Momin, K.A.}, Sadri, A.M., and Hasnine, M.S. (2025). Leveraging social media data to identify factors influencing public attitude towards accessibility, socioeconomic disparity, and public transportation. \textit{Public Transport}. \hfill [\textcolor{mycolor}{SJR: Q1}]
+
+\item Sun Y., \textbf{Momin, K.A.}, Zhang, A., Sadri, A.M. (2025). Reevaluating Hurricane Evacuation Zones through Community Resilience: Insights from Social Media Engagement. \textit{Risk Analysis}. \hfill [\textcolor{mycolor}{SJR: Q1}]
+
+\end{justifying}
+\end{enumerate}
+
+\section{Grants \& Proposal Writing}
+\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.8mm]
+
+\item \textbf{Sponsor:} NSF EPSCoR S\textsuperscript{3}OK (Socially Sustainable Solutions for Water, Carbon and Infrastructure Resilience in Oklahoma) — Sustainable Infrastructure (SI) Seed Grant \\
+\textit{Title:} Towards a Socially Sustainable \& Economically Feasible Electrified Transportation Infrastructure for Oklahoma. \\
+Team: PI — Dr. Arif Mohaimin Sadri; Co-PIs — Dr. K. K. Muraleetharan, Dr. Richa Bhattarai, Khondhaker Al Momin.\\
+Role: Co-PI (10\%) \hfill \textbf{Outcome: Awarded} \\
+Amount: \$75,000 \hfill Period: \textit{12/01/2025 – 06/30/2026}
+
+
+\item \textbf{Sponsor:} Southern Plains Transportation Center (SPTC) — Cycle 3 Research Program \\
+\textit{Title:} Developing a Sustainable Business Case for Electric Vehicle Charging Infrastructure in Rural Oklahoma. \\
+Team: PI — Dr. Arif Mohaimin Sadri; Co-PIs — Dr. Dominique Pittenger, Khondhaker Al Momin.\\
+Role: Co-PI (10\%);  \hfill \textbf{Outcome: Awarded} \\
+Amount: \$65,000 \hfill Period: \textit{01/15/2026 – 01/14/2027}
+
+
+
+% \item \textbf{Sponsor:} OU Data Institute for Societal Challenges (DISC) \\
+% Program: Graduate Student Seed Funding \\
+% \textit{Title:} Economic Impact of EV Charging Stations on Nearby Businesses: A Multi-State Study. \\
+% Team: PI — Khondhaker Al Momin; Co-PIs — Dr. Arif Mohaimin Sadri, Dr. Richa Bhattarai.\\
+% Role: PI \hfill \textbf{Outcome:} \textit{Under Review} \\
+% Amount: \$2,500 \hfill Period: \textit{01/01/2026 – 06/30/2026} 
+
+
+% Add more items as needed
+\end{itemize}
+
+\section{Research Experience}
+% \vspace{-0.4mm}
+\resumeSubHeadingListStart
+  \resumeSubheading
+      {\textcolor{mycolor}{Transportation, Risk and Information Commons (TRICS) Lab}}{Graduate Research Assistant{}}
+      {School of Civil Engineering \& Environmental Science, University of Oklahoma}{May 2022 - Present}
+      \vspace{2mm}
+    \begin{justifying}
+    \resumeItemListStart
+        Advisor: \href{https://scholar.google.com/citations?user=tushDT8AAAAJ&hl=en&authuser=1}{\textbf{Dr. Arif Mohaimin Sadri}}
+
+    \resumeItemListEnd
+
+    The Transportation, Risk, and Information Commons (TRICS) Lab, directed by Dr. Arif Mohaimin Sadri at the School of Civil Engineering \& Environmental Science, University of Oklahoma, focuses on the critical interdependence of transportation systems with social and other physical systems (e.g., electric grid, gas, water network), particularly in the context of natural and human-made hazards. TRICS lab develops data-driven and network-based solutions to enhance bottom-up resilience in complex, interdependent systems.
+    
+      \resumeItemListStart
+    \item Guided and mentored 2 undergraduate and 3 MSc students involved in TRICS lab research projects.
+    \resumeItemListEnd
+    % --- END MENTORING ITEM ---
+
+\noindent
+\textcolor{mycolor}{\textbf{Funded Project Works}}
+
+    
+      \resumeItemListStart
+        \item Socially Sustainable Solutions for Water, Carbon, and Infrastructure Resilience in Oklahoma (S\textsuperscript{3}OK). Funding for this project was provided by the US National Science Foundation (NSF) under Grant No. OIA-1946093 through OK NSF EPSCoR.
+        \item Risk-Sharing Communication Networks for Compound Disasters. Funding for this project was provided by the US National Science Foundation (NSF) under Grant No. BCS-2339100.
+        \item Trust Formation and Risk Communication in Underserved Communities during Compound Hazard Events through Online and Offline Social Networks (TRUCHE). Funding for this project was provided by the US National Science Foundation (NSF) under Grant No. CNS-2229439
+        \item Risk Mapping of Interdependent Social and Physical Infrastructure Networks in Oklahoma (I-SPIN-OK). Funding for this project was provided by the US National Science Foundation (NSF) under Grant No. OIA-1946093 through OK NSF EPSCoR. 
+    \resumeItemListEnd
+    \end{justifying}
+
+    
+  \resumeSubheading
+      {\textcolor{mycolor}{Department of Civil Engineering}}{Research Assistant{}}
+      {Bangladesh University of Engineering \& Technology (BUET)}{January 2021 - April 2022}
+      \vspace{2mm}
+      \begin{justifying}
+      
+    \resumeItemListStart
+        Advisor: \href{https://ce.buet.ac.bd/profile-of-md-shamsul-hoque/}{\textbf{Dr. Md. Shamsul Hoque}}
+
+    \resumeItemListEnd
+
+    I worked on the Sociotechnical Approach to Road Safety (STARS) project under the supervision of Dr. Md. Shamsul Hoque. We developed a comprehensive framework for road crash mitigation using advanced systematic approaches and design principles tailored to the specific challenges of low- and middle-income countries (LMICs). My Master's thesis is based on this project, which focused on developing actionable safety measures to reduce the number and severity of road accidents in LMICs.
+
+\vspace{2mm}
+
+\noindent
+\textcolor{mycolor}{\textbf{Funded Project Works}}
+    
+      \resumeItemListStart
+        \item Sociotechnical Approach to Road Safety (STARS). Funding for this project was provided by the National Institute for Health Research (NIHR), United Kingdom. The STARS project, directed by Professor Neville Stanton at the University of Southampton, U.K., received a total funding of £2,316,018.29 under Award ID: 16/137/122. 
+    \resumeItemListEnd
+    \end{justifying}
+\resumeSubHeadingListEnd
+
+
+
+\section{Teaching Experience}
+\vspace{-0.4mm}
+  \resumeSubHeadingListStart
+  \resumeSubheading
+      {{School of Civil Engineering \& Environmental Science}}{Graduate Teaching Assistant{}}
+      {University of Oklahoma}{Spring 2023 - Spring 2026}
+      \vspace{2mm}
+    \begin{justifying}
+    \resumeItemListStart
+        Co-taught with Primary Instructor: \textbf{Dr. Arif Mohaimin Sadri}
+    \resumeItemListEnd
+    
+\noindent
+    Courses: \textit{CEES 3883 - Transportation Engineering, CEES 4883 - Traffic Analysis, Design \& Control and CEES 5020- AI in Civil Engineering and Environmental Science}
+
+    \resumeItemListStart 
+        \item \textbf{Awarded competitive Dolese Teaching Fellowship} (2025–2026) to integrate Artificial Intelligence (AI) into \textit{CEES 4883: Traffic Analysis, Control and Design} and to develop a new graduate course, \textit{CEES 5020: AI In Civil Engineering \& Environmental Science}.
+    \resumeItemListEnd
+    
+\resumeItemListStart 
+    \item \textbf{Teaching Evaluations:} Demonstrated consistently strong teaching effectiveness, receiving an overall score of \textbf{4.36/5.00} for \textit{CEES 3883} (Spring 2025) and improving to a perfect \textbf{5.00/5.00} for \textit{CEES 4883: Traffic Analysis, Design \& Control} (Fall 2025) in end-of-semester anonymous student evaluations.
+\resumeItemListEnd
+
+
+    % --- End Teaching Score ---
+    
+
+\noindent
+\textcolor{mycolor}{\textbf{Duties}}
+
+    
+      \resumeItemListStart
+        \item Spearheaded course development as a Dolese Teaching Fellow, designing a new graduate course (CEES 5020: AI In Civil Engineering \& Environmental Science) and integrating AI modules into the undergraduate Traffic Analysis curriculum.
+        \item Co-taught core courses by delivering guest lectures, developing supplementary course materials, and leading hands-on lab sessions for \textit{CEES 3883 (Transportation Engineering)} and \textit{CEES 5020 (Traffic Analysis)}.
+        \item Managed course administration and student evaluation, including grading assignments, holding targeted office hours, and providing constructive feedback to help students overcome conceptual challenges. 
+    \resumeItemListEnd
+    \end{justifying}
+
+    
+  \resumeSubheading
+      {{Department of Civil Engineering}}{Senior Lecturer{}}
+      {Daffodil International University (Dhaka, Bangladesh)}{September 2018 - April 2022}
+      \vspace{2mm}
+      \begin{justifying}
+    \resumeItemListStart
+        Primary Instructor: \textbf{Mr. Khondhaker Al Momin}
+    \resumeItemListEnd
+    
+\noindent
+    Courses: \textit{CE 351 - Transportation Engineering I, CE 352 - Transportation Engineering Lab I, CE 451 - Transportation Engineering II, CE 452 - Transportation Engineering Lab II, CE 104 - Surveying Lab, CE 100 - Civil Engineering Drawing, CSE 202 - Numerical Analysis \& Computer Programming}
+
+\vspace{2mm}
+\noindent
+\textcolor{mycolor}{\textbf{Duties}}
+    
+      \resumeItemListStart
+        \item Prepared and delivered lectures, course materials, and assignments.
+        \item Taught and mentored over 500 students in 4 years, reshaping course content to align with modern technologies and industry trends.
+        \item Guided students in selecting appropriate courses for their career goals and supported their academic achievements.
+        \item Developed lab manuals for undergraduate students.
+        \item Mentored students on class projects, multiple undergraduate theses, and academic and career pursuits.
+        \item Collaborated with the management department to determine human resource and skill requirements for various employment positions.
+    \resumeItemListEnd
+    \end{justifying}
+
+
+  \resumeSubheading
+      {{Department of Civil Engineering}}{Lecturer{}}
+      {University of Global Village (Barisal, Bangladesh)}{January 2018 to September 2018}
+      \vspace{2mm}
+      \begin{justifying}
+    \resumeItemListStart
+        Primary Instructor: \textbf{Mr. Khondhaker Al Momin}
+    \resumeItemListEnd
+    
+\noindent
+    Courses: \textit{CE 101 - Engineering Mechanics, CE 313 - Structural Analysis I, CE 351 - Transportation Engineering}
+
+
+\noindent
+\textcolor{mycolor}{\textbf{Duties}}
+    
+      \resumeItemListStart
+        \item Prepared and delivered lectures, course materials, and assignments.
+        \item Taught and mentored over 100 students and guided them for their career goals and supported their academic achievements.
+        \item Mentored students on class projects.
+    \resumeItemListEnd
+    \end{justifying}
+
+    
+\resumeSubHeadingListEnd
+
+
+\vspace{-8mm}
+
+% #################### Awards  #############################
+\section{Fellowships \& Awards}
+
+\begin{flushleft}
+
+\parbox[t]{2.5cm}{\textbf{2025}}%
+\hspace{-4mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm+4mm\relax}{%
+\textbf{Best Paper Award}; 2025 Oklahoma Transportation Research Day. Acknowledged for significant contributions to transportation research. University of Central Oklahoma, Edmond, OK. October 14, 2025.}\\[1em]
+
+
+\parbox[t]{2.5cm}{\textbf{2025}}%
+\hspace{-4mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm+4mm\relax}{%
+\textbf{Best Paper Award (2nd Place)}; 2025 Oklahoma Transportation Summer Symposium. Recognized for high-impact research and effective scholarly communication. OSU Hamm Institute for American Energy, Oklahoma City, OK. July 29, 2025.}\\[1em]
+
+
+%--- Scholarship ---
+
+% --- ADD THIS NEW BLOCK ---
+\parbox[t]{2.5cm}{\textbf{2025--2026}}%
+\hspace{-4mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm+4mm\relax}{%
+\textbf{Dolese Teaching Fellowship} (\$25,000); Gallogly College of Engineering, University of Oklahoma.
+A competitive fellowship awarded to ten graduate students for demonstrated excellence and commitment to the college's teaching mission.}\\[1em]
+% --- END NEW BLOCK ---
+
+
+\parbox[t]{2.5cm}{\textbf{2024--2025}}%
+\hspace{-4mm}% Adjusted spacing
+\parbox[t]{\dimexpr\textwidth-2.5cm+4mm\relax}{%
+\textbf{Nettie Vincent Boggs Graduate Fellowship} for outstanding research and academic record in the College of Engineering at the University of Oklahoma.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2024--2025}}%
+\hspace{-4mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm+4mm\relax}{%
+GSS Travel Grant, Graduate Student Senate, University of Oklahoma, for presenting research at the International Conference on Transportation and Development (ICTD, 2024).}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2024--2025}}%
+\hspace{-4mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm+4mm\relax}{%
+Access Scholarship, Office of Global Engagement, University of Oklahoma, based on academic achievement and commitment to international activities at the University of Oklahoma.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2023--2024}}%
+\hspace{-4mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm+4mm\relax}{%
+Gallogly College of Engineering Scholarship for outstanding academic record in the College of Engineering at the University of Oklahoma.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2023--2024}}%
+\hspace{-4mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm+4mm\relax}{%
+\textbf{Oklahoma Traffic Engineering Association (OTEA) Scholarship} based on academic performance in Traffic and Transportation Engineering at the University of Oklahoma.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2023--2024}}%
+\hspace{-4mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm+4mm\relax}{%
+Robberson Travel Grant for presenting research at Transportation Research Board (TRB) 102\textsuperscript{nd} Annual Meeting 2023.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2023--2024}}%
+\hspace{-4mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm+4mm\relax}{%
+\textbf{Betsy Douglass and Millar B. White Jr. Endowed Scholarship and Mote Endowed Engineering Scholarship} for outstanding academic record in the Gallogly College of Engineering, University of Oklahoma.}
+\end{flushleft}
+
+% \vspace{-8mm}
+
+
+
+\section{Conference \& Symposium Presentation}
+\resumeSubHeadingListStart
+
+\resumeProject
+  {\textcolor{mycolor}{2025 Oklahoma Transportation Research Day}}
+  {October 14, 2025, Edmond, Oklahoma, USA}{}{{Poster Presentation}}
+\resumeItemListStart
+    \item The Green Gridlock: Modeling the Unintended Wildfire Evacuation Risk of Electric Vehicle Adoption.
+\resumeItemListEnd
+
+
+\resumeProject
+  {\textcolor{mycolor}{2025 Fall MOVITE (ITE Missouri Valley District) Meeting}}
+  {October 01-03, 2025, Des Monies, Iowa, USA}{}{{Podium Presentation}}
+\resumeItemListStart
+  \item The Green Gridlock: Modeling the Unintended Wildfire Evacuation Risk of Electric Vehicle Adoption.
+\resumeItemListEnd
+
+
+\resumeProject
+  {\textcolor{mycolor}{2025 Oklahoma Transportation Summer Symposium}}
+  {July 29, 2025, Oklahoma City, Oklahoma, USA}{}{{Poster \& Podium Presentation}}
+\resumeItemListStart
+    \item Modeling EV Adoption Potential Using Public Perception and Infrastructure Accessibility
+\resumeItemListEnd
+
+\resumeProject
+  {\textcolor{mycolor}{International Conference on Transportation and Development (ICTD 2025)}}
+  {June 8-11, 2025, Glendale, Arizona, USA.}{}{{Podium Presentation}}
+\resumeItemListStart
+    \item Modeling EV Adoption Potential Using Public Perception and Infrastructure Accessibility
+    \item Assessing Spatial Accessibility and Socio-Demographic Disparities in EV Charging Infrastructure
+    \item Predicting Long-Term Urban Traffic Patterns under Varying Weather Conditions with AI
+\resumeItemListEnd
+
+
+\resumeProject
+  {\textcolor{mycolor}{2025 MOVITE (Missouri Valley District) and SDITE (Southern District) Joint Meeting}}
+  {April 13-16, 2025, Memphis, Tennese, USA}{}{{Poster Presentation}}
+\resumeItemListStart
+  \item Application of multi-criteria decision analysis for optimal siting of electric vehicle charging stations in Oklahoma.
+\resumeItemListEnd
+
+
+\resumeProject
+  {\textcolor{mycolor}{104\textsuperscript{th} Transportation Research Board (TRB) Annual Meeting}}
+  {January 5–9, 2025, Washington, D.C, USA}{}{{Poster Presentation}}
+\resumeItemListStart
+    \item Information switching patterns of risk communication in social media during disasters
+\resumeItemListEnd
+
+
+
+\resumeProject
+  {\textcolor{mycolor}{2024 Fall MOVITE (ITE Missouri Valley District) Meeting}}
+  {October 15-18, 2024, Manhattan, Kansas, USA}{}{{Poster Presentation}}
+\resumeItemListStart
+  \item Robust Site Selection for Electric Vehicle Charging Stations using Multi-Criteria Decision Analysis
+\resumeItemListEnd
+
+\resumeProject
+  {\textcolor{mycolor}{2024 Oklahoma Transportation Research Day}}
+  {October 15, 2024, Oklahoma City, Oklahoma, USA}{}{{Poster Presentation}}
+\resumeItemListStart
+    \item Information Switching Patterns of Risk Communication in Social Media during Disasters
+\resumeItemListEnd
+
+
+\resumeProject
+  {\textcolor{mycolor}{2024 Oklahoma Transportation Summer Symposium}}
+  {July 30, 2024, Oklahoma City, Oklahoma, USA}{}{{Poster \& Podium Presentation}}
+\resumeItemListStart
+    \item Assessing Spatial Accessibility and Socio-Demographic Disparities in Electric Vehicle Charging Infrastructure
+    \item Multi-Criteria Decision Analysis for Robust Locations of Electric Vehicle Charging Stations
+\resumeItemListEnd
+
+
+\resumeProject
+  {\textcolor{mycolor}{49\textsuperscript{th} Annual Natural Hazards Research and Applications Workshop}}
+  {July 14-17, 2024, Boulder, Colorado, USA}{}{{Podium Presentation}}
+\resumeItemListStart
+  \item Understanding the Social Media Information Switching Behavior During Compound Disasters
+\resumeItemListEnd
+
+
+\resumeProject
+  {\textcolor{mycolor}{International Conference on Transportation and Development (ICTD 2024)}}
+  {June 15-18, 2024, Atlanta, Georgia, USA.}{}{{Poster Presentation}}
+\resumeItemListStart
+    \item Leveraging Social Media Data to Study Social Equity in Transportation
+    \item Community Based Behavioral Understanding of Crisis Activity Concerns during 2023 Canadian Wildfires
+    \item Data-driven Resilience Model of Roadway Directionality Configuration based on Topological Credential
+\resumeItemListEnd
+
+
+\resumeProject
+  {\textcolor{mycolor}{103\textsuperscript{rd} Transportation Research Board (TRB) Annual Meeting}}
+  {January 7–11, 2024, Washington, D.C, USA}{}{{Poster Presentation}}
+\resumeItemListStart
+    \item Translating Social Media Crisis Narratives into Road Network Utilization Metrics: The Case of 2020 Oklahoma Ice Storm.
+    \item Community-based Behavioral Understanding of Crisis Activity Concerns using Social Media Data: A Study on the 2023 Canadian Wildfires in New York City.
+    \item A Data-driven Resilience Framework of Directionality Configuration based on Topological Credentials in Road Networks.
+\resumeItemListEnd
+
+\resumeProject
+  {\textcolor{mycolor}{2023 Oklahoma Transportation Research Day}}
+  {October 17, 2023, Oklahoma City, Oklahoma, USA}{}{{Poster Presentation}}
+\resumeItemListStart
+    \item Community-based Behavioral Understanding of Crisis Activity Concerns using Social Media Data: A Study on the 2023 Canadian Wildfires in New York City
+\resumeItemListEnd
+
+\resumeProject
+  {\textcolor{mycolor}{2023 Fall MOVITE (ITE Missouri Valley District) Meeting}}
+  {October 04-06, 2023, Bentonville, Arkansas, USA}{}{{}}
+
+\resumeProject
+  {\textcolor{mycolor}{48\textsuperscript{th} Annual Natural Hazards Research and Applications Workshop}}
+  {July 11-14, 2023, Boulder, Colorado, USA}{}{{Podium Presentation}}
+\resumeItemListStart
+    \item Risk Mapping of Interdependent Social and Physical Infrastructure Networks for Multi-Hazard Events
+    \item Identifying Critical Decision Trees of First Responders in Underserved Communities During Disasters
+\resumeItemListEnd
+
+
+\resumeProject
+  {\textcolor{mycolor}{102\textsuperscript{nd} Transportation Research Board (TRB) Annual Meeting}}
+  {January 8–12, 2023, Washington, D.C, USA}{}{{Poster Presentation}}
+\resumeItemListStart
+    \item Identifying Crisis Response Communities in Online Social Networks for Compound Disasters: The Case of Hurricane Laura and Covid-19
+    \item Evaluating University Students’ Safety Behavior on Three-Wheel Electric Rickshaw.
+\resumeItemListEnd
+
+\resumeProject
+  {\textcolor{mycolor}{2022 Oklahoma Transportation Research Day}}
+  {October 18, 2022, Oklahoma City, Oklahoma, USA}{}{{Poster Presentation}}
+\resumeItemListStart
+    \item Leveraging social media data to identify factors influencing public attitude towards accessibility, socioeconomic disparity and public transportation
+\resumeItemListEnd
+
+\resumeProject
+  {\textcolor{mycolor}{47\textsuperscript{th} Annual Natural Hazards Research and Applications Workshop}}
+  {Virtual Meeting - July 13-14, 2022}{}{{Oral Presentation}}
+\resumeItemListStart
+  \item Identifying Hurricane Laura Crisis Response Communities in Online Social Networks
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{Professional Service}
+\textcolor{mycolor}{\textbf{Committee Membership}}
+
+\begin{flushleft}
+\parbox[t]{2.5cm}{\textbf{2025--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Member,} \href{https://www.asce.org/communities/institutes-and-technical-groups/transportation-and-development-institute/committees/board-of-governors--t-di/planning---development-council/sustainable-transportation-committee}{ASCE Transportation \& Development Institute (T\&DI) – Sustainable Transportation Committee}. Contributing to committee discussions, collaborative research, and initiatives advancing sustainable and resilient transportation systems.}
+\end{flushleft}
+
+\parbox[t]{2.5cm}{\textbf{2026--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Corresponding Member,} \href{https://www.asce.org/communities/institutes-and-technical-groups/transportation-and-development-institute/committees/board-of-governors--t-di/roadway-council/transportation-safety-committee}{ASCE Transportation \& Development Institute (T\&DI) – Transportation Safety Committee.} Participating in committee activities, technical discussions, and collaborative initiatives related to transportation safety research and practice.}
+
+
+\vspace{1em}
+\textcolor{mycolor}{\textbf{Journal Reviewer}}
+
+\noindent
+\begin{justify}
+As an active peer reviewer for leading international journals and conference proceedings, I have completed \textbf{50+ peer reviews} across \textbf{14 journals and conference venues}. My reviewing activities span transportation engineering, disaster risk reduction, information systems, and human behavior research. My reviews emphasize methodological rigor, reproducibility, and the practical relevance of theoretical insights to engineering and management applications. \href{https://orcid.org/0000-0002-4548-9837#peer-review}{\textcolor{mycolor}{\textit{Complete verified peer-review record: ORCID 0000-0002-4548-9837}}}
+\end{justify}
+
+\begin{justify}
+\begin{flushleft}
+
+\parbox[t]{2.5cm}{\textbf{2025--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Reviewer}, \href{https://www.nature.com/srep/}{Scientific Reports (Nature Publishing Group)}. Reviewed manuscripts on AI-enabled public health systems and geospatial data-driven modeling, including federated learning and graph neural network applications.}
+\\[0.5em]
+
+
+\parbox[t]{2.5cm}{\textbf{2025--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Reviewer}, \href{https://www.sciencedirect.com/journal/green-technologies-and-sustainability}{Green Technologies and Sustainability}. Reviewed submissions on sustainable transportation systems, EV charging infrastructure planning, and hybrid GIS–MCDM methodologies.}
+\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2025--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Reviewer}, \href{https://www.sciencedirect.com/journal/international-journal-of-information-management-data-insights}{International Journal of Information Management Data Insights}. Reviewed a methodological submission on natural language processing and information extraction in disaster communication, emphasizing data augmentation, class imbalance, and empirical validation.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2025--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Reviewer}, \href{https://www.sciencedirect.com/journal/information-and-management}{Information \& Management}. Reviewed theoretical and applied research on information systems design, implementation, and management, focusing on methodologies, managerial strategies, and organizational information policies.}\\[0.5em]
+
+
+\parbox[t]{2.5cm}{\textbf{2024--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Reviewer}, \href{https://www.sciencedirect.com/journal/international-journal-of-disaster-risk-reduction}{International Journal of Disaster Risk Reduction}. Reviewed research on disaster risk reduction, focusing on vulnerability analysis, resilience strategies, and interdisciplinary approaches.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2024--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Reviewer}, \href{https://www.sciencedirect.com/journal/sustainable-cities-and-society}{Sustainable Cities and Society}. Reviewed submissions on sustainable urban development, smart cities, and resilient infrastructure systems.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2024--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Reviewer}, \href{https://www.sciencedirect.com/journal/computers-in-human-behavior-reports}{Computers in Human Behavior Reports}. Reviewed research on human-computer interaction, user experience, and the societal impacts of digital technologies.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2023--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Reviewer}, \href{https://journals.sagepub.com/home/jis}{Journal of Information Science}. Reviewed research focused on information management, theoretical frameworks, and applied methodologies.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2023--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Reviewer}, \href{https://www.sciencedirect.com/journal/social-sciences-and-humanities-open}{Social Sciences \& Humanities Open}. Reviewed submissions addressing transportation-related social science topics and interdisciplinary perspectives.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2022--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Reviewer}, \href{https://journals.sagepub.com/home/trr}{Transportation Research Record: Journal of the Transportation Research Board}. Reviewed papers on transportation policy, planning, operations, safety, and design.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2022--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Reviewer}, \href{https://www.sciencedirect.com/journal/transportation-research-interdisciplinary-perspectives}{Transportation Research Interdisciplinary Perspectives}.Reviewed policy-oriented studies, innovative methodologies, and interdisciplinary research.}\\[0.5em]
+
+\parbox[t]{2.5cm}{\textbf{2022--Present}}%
+\hspace{0.1mm}%
+\parbox[t]{\dimexpr\textwidth-2.5cm-0.1mm\relax}{%
+\textbf{Reviewer}, \href{https://trb-annual-meeting.nationalacademies.org/}{Transportation Research Board Annual Meeting}. Reviewed submissions on transportation equity, resilience, and infrastructure vulnerability.}
+\end{flushleft}
+\end{justify}
+
+
+
+
+\section{Skills}
+\begin{tabularx}{\textwidth}{ p{3.5cm} X }
+    \textbf{Traffic \& Design} & 
+    SUMO, Synchro, Simtraffic, Vissim, PC-Warrants, NetLogo, MATSim. \\[2ex]
+
+    \textbf{Data Analysis} & 
+    Python (Expert; Pandas, Scikit-learn, NumPy, NetworkX), R, MATLAB, Machine Learning, Generative AI, Statistical Modeling. \\[4ex]
+    
+    \textbf{Spatial Analysis} & 
+    ArcGIS Pro (Expert), QGIS. \\[2ex]
+
+    \textbf{Domain Expertise} & 
+    Transportation Network Resilience, Wildfire Evacuation, Multi-Criteria Decision Analysis, System Optimization, Spatial Statistics, Disaster Response Modeling. \\[2ex]
+
+    \textbf{Technical Tools} & 
+    LaTeX, Microsoft Office Suite (incl. Visio), SPSS, STATA, AutoCAD \\[2ex]
+
+    \textbf{Professional Skills} & 
+    Research Project Management, Technical Writing \& Documentation, Public Speaking \& Presentations, Stakeholder Communication, Grant Proposal Writing. \\
+\end{tabularx}
+
+
+\section{Professional Membership}
+\begin{flushleft}
+\textcolor{mycolor}{\textbf{Institute of Transportation Engineers (ITE)}}\\
+\parbox[t]{2.5cm}{\textbf{2022--Present}}%
+\parbox[t]{\dimexpr\textwidth-2.5cm\relax}{%
+\textbf{Student Member.} As a member of ITE, I am dedicated to the field of transportation engineering, and value the opportunities to learn, connect with peers, and develop professionally that ITE provides.}\\[0.5em]
+
+% \newpage
+\textcolor{mycolor}{\textbf{American Society of Civil Engineers (ASCE)}}\\
+\parbox[t]{2.5cm}{\textbf{2022--Present}}%
+\parbox[t]{\dimexpr\textwidth-2.5cm\relax}{%
+\textbf{Student Member.} As an ASCE student member, I am inspired by the transformative impact of civil engineering on society. I value ASCE's commitment to fostering innovation, providing access to cutting-edge research, and offering unique opportunities for leadership and collaboration in the field.}\\[0.5em]
+
+\textcolor{mycolor}{\textbf{American Society for Engineering Education (ASEE)}}\\
+\parbox[t]{2.5cm}{\textbf{2022--Present}}%
+\parbox[t]{\dimexpr\textwidth-2.5cm\relax}{%
+\textbf{Student Member.} As a student member of ASEE, I engage with the engineering education community, stay informed about the latest developments in the engineering education field, and benefit from resources that enhance my professional growth.}\\[0.5em]
+
+\textcolor{mycolor}{\textbf{Institute for Operations Research and Management Sciences (INFORMS)}}\\
+\parbox[t]{2.5cm}{\textbf{2023--Present}}%
+\parbox[t]{\dimexpr\textwidth-2.5cm\relax}{%
+\textbf{Student Member.} As a student member of INFORMS, I have the opportunities to deepen my understanding of the field of operations research and analytics, connect with like-minded peers, and develop professionally through access to various resources and events offered by the organization.}\\[0.5em]
+
+% \textcolor{mycolor}{\textbf{Institution of Engineers, Bangladesh (IEB)}}\\
+% \parbox[t]{2.5cm}{\textbf{2021--Present}}%
+% \parbox[t]{\dimexpr\textwidth-2.5cm\relax}{%
+% \textbf{Member.} IEB is the national professional organization of engineers in Bangladesh. As a member of IEB, I value the opportunities IEB provides for professional growth, networking with fellow engineers, and contributing to the advancement of engineering practices.}
+\end{flushleft}
+
+\section{Leadership \& Extracurricular Activities}
+
+\begin{flushleft}
+\textcolor{mycolor}{\textbf{Institute of Transportation Engineers (ITE) University of Oklahoma Student Chapter}}\\
+\parbox[t]{2.5cm}{\textbf{2025--2026}}%
+\parbox[t]{\dimexpr\textwidth-2.5cm\relax}{%
+\textbf{Vice President.}}\\[0.5em]
+\parbox[t]{2.5cm}{\textbf{2023--2025}}%
+\parbox[t]{\dimexpr\textwidth-2.5cm\relax}{%
+\textbf{President.} The Institute of Transportation Engineers (ITE) is a global association of transportation professionals committed to advancing knowledge and practices in the field. Established in 1930, ITE has played a pivotal role in promoting safe, efficient, and sustainable transportation systems through professional development, research, and networking opportunities for its members.\\
+
+Faculty Advisor: Dr. Arif Mohaimin Sadri.}\\
+
+\textbf{Duties:}
+\begin{itemize}
+    \item Planned and conducted workshops and seminars on advanced topics in transportation engineering research, facilitating knowledge sharing and skill development among chapter members and the broader academic community.
+    \item Fostered collaboration with industry professionals and academic experts by organizing networking events, guest lectures, and panel discussions, enhancing the chapter's engagement with the global ITE community and providing members with valuable industry insights and career opportunities.
+\end{itemize}
+
+\textcolor{mycolor}{\textbf{INFORMS University of Oklahoma Student Chapter}}\\
+\parbox[t]{2.5cm}{\textbf{2024--2025}}%
+\parbox[t]{\dimexpr\textwidth-2.5cm\relax}{%
+\textbf{Webmasters.} The Institute for Operations Research and the Management Sciences (INFORMS) is a global organization that brings together practitioners in the disciplines of operations research, management science, and analytics.\\
+Faculty Advisor: Professor Kash Barker.}\\
+
+\textbf{Duties:}
+\begin{itemize}
+    \item Manage and update the INFORMS OU student chapter website to ensure accurate and timely information.
+    \item Collaborate with the executive board to promote events, activities, and announcements on the website.
+\end{itemize}
+
+\textcolor{mycolor}{\textbf{Students Association of Bangladesh (SAB) at the University of Oklahoma}}\\
+\parbox[t]{2.5cm}{\textbf{2024--2025}}%
+\parbox[t]{\dimexpr\textwidth-2.5cm\relax}{%
+\textbf{Vice President.}}\\[0.5em]
+\parbox[t]{2.5cm}{\textbf{2022--2023}}%
+\parbox[t]{\dimexpr\textwidth-2.5cm\relax}{%
+\textbf{General Secretary.} The Students Association of Bangladesh (SAB) is a vibrant organization committed to building a strong community and promoting cultural pride among Bangladeshi students. SAB provides a supportive network for its members, fosters cultural awareness, and enriches the student experience through diverse social, educational, and cultural programs.\\
+Faculty Advisor: Professor Mohammed Atiquzzaman.}\\
+% By encouraging active engagement and collaboration, SAB cultivates an inclusive environment that honors the rich heritage of Bangladesh while advancing the academic and personal development of its members.
+
+\textbf{Duties:}
+\begin{itemize}
+    \item Oversee the administration and operations of the Students Association of Bangladesh (SAB).
+    \item Coordinate and organize meetings, events, and activities for SAB members.
+    \item Maintain and manage official records, minutes, and documentation of SAB activities.
+    \item Act as the primary point of contact between SAB members and external organizations.
+\end{itemize}
+\end{flushleft}
+
+
+
+\end{document}
+
+
