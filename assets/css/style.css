@@ -438,7 +438,74 @@ section { padding: 90px 0; overflow: hidden; }
 }
 
 /*--------------------------------------------------------------
-# Resume / Timeline
+# Resume Sub-Sections
+--------------------------------------------------------------*/
+.resume-section { margin-bottom: 3.5rem; }
+.resume-section:last-child { margin-bottom: 0; }
+
+.resume-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark-crimson);
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 2px solid var(--border);
+}
+.resume-section-title i { font-size: 1.3rem; color: var(--crimson); }
+
+/* Education Cards */
+.edu-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--crimson);
+  box-shadow: var(--shadow-sm);
+  height: 100%;
+  transition: var(--transition);
+}
+.edu-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+.edu-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0.4rem 0 0.3rem;
+  line-height: 1.4;
+}
+.edu-year {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--crimson);
+  background: var(--crimson-light);
+  padding: 0.15rem 0.65rem;
+  border-radius: 4px;
+}
+.edu-place {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0.3rem 0 0.6rem;
+}
+.edu-card ul {
+  font-size: 0.875rem;
+  color: var(--text);
+  padding-left: 1.2rem;
+  margin: 0;
+}
+.edu-card ul li { padding-bottom: 0.2rem; }
+
+/* Experience Timeline (full width) */
+.exp-timeline { padding-left: 0.5rem; }
+
+/*--------------------------------------------------------------
+# Resume / Timeline (shared items)
 --------------------------------------------------------------*/
 .resume-col { padding: 0 10px; }
 
@@ -610,6 +677,29 @@ section { padding: 90px 0; overflow: hidden; }
 /*--------------------------------------------------------------
 # Professional Service
 --------------------------------------------------------------*/
+.service-intro {
+  background: var(--crimson-light);
+  border-left: 4px solid var(--crimson);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 2rem;
+  font-size: 0.925rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+.orcid-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.65rem;
+  color: var(--crimson);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.orcid-link i { font-size: 1.1rem; color: #a6ce39; }
+.orcid-link:hover { color: var(--dark-crimson); text-decoration: underline; }
+
 .service-subheading {
   font-size: 1.05rem;
   font-weight: 700;
